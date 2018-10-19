@@ -1,0 +1,272 @@
+% pdflatex CVMC_En.tex; bibtex CVMC_En; pdflatex CVMC_En.tex; pdflatex CVMC_En.tex; 
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,a4paper,sans]{moderncv}
+\moderncvstyle{casual}
+\moderncvcolor{grey} 
+\usepackage[margin=2.5cm,bmargin=3cm]{geometry} % Reduce document margins
+\setlength{\footskip}{40pt}
+%\setlength{\hintscolumnwidth}{3cm} % Uncomment to change the width of the dates column
+%\setlength{\makecvtitlenamewidth}{10cm} % For the 'classic' style, uncomment to adjust the width of the space allocated to your name
+
+
+
+%----------------------------------------------------------------------------------------
+%	NAME AND CONTACT INFORMATION SECTION
+%----------------------------------------------------------------------------------------
+
+\firstname{Mickaël} % Your first name
+\familyname{CANOUIL} % Your last name
+
+% All information in this block is optional, comment out any lines you don't need
+\title{Curriculum Vit\ae}
+
+% \address{138, Rue de Paris}{59800 Lille, France}
+% \mobile{+33 (0) 658 58 79 57}
+% \email{mickael@canouil.fr}
+\address{138 Rue Pierre Mauroy, 59000 Lille}
+\phone{+33 (0)6 58 58 79 57}
+\email{mickael.canouil@cnrs.fr}
+\homepage{mickael.canouil.fr}
+\quote{The best thing about being a statistician is that you get to play in everyone's backyard \\
+-- John Tukey}
+\photo[80pt][1pt]{./pictures/id_picture.png} % The first bracket is the picture height, the second is the thickness of the frame around the picture (0pt for no frame)
+
+
+
+
+%----------------------------------------------------------------------------------------
+
+
+\begin{document}
+
+
+%----------------------------------------------------------------------------------------
+%	COVER LETTER
+%----------------------------------------------------------------------------------------
+
+% To remove the cover letter, comment out this entire block
+
+\recipient{INSERM CR1219 (Biostatistic team)\\ISPED}{146, rue Léo Saignat\\33076 Bordeaux Cedex, France} % Letter recipient
+\date{\today} %{October 19\textsuperscript{th}, 2018} % Letter date
+\opening{Dear Madam Virginie RONDEAU,} % Opening greeting
+\closing{Sincerely yours,} % Closing phrase
+\enclosure[Attached]{Curriculum Vit\ae{}} % List of enclosed documents
+
+\makelettertitle % Print letter title
+
+Here is my cover letter
+
+\makeletterclosing % Print letter signature
+\clearpage
+
+
+
+%----------------------------------------------------------------------------------------
+%	CURRICULUM VIAE
+%----------------------------------------------------------------------------------------
+
+\makecvtitle % Print the CV title
+
+
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE SECTION
+%----------------------------------------------------------------------------------------
+\section{Experience}
+%\subsection{Vocational}
+
+\cventry{Jan. 2016 -- Nov. 2018}{Head of the Biostatistic Team (CNRS / Pasteur Institute Lille)}{%
+    UMR CNRS 8199 - Integrated Genomics and Metabolic Diseases Modeling}{Lille}{%
+    Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments, consortium work package lead analyst, team management}{Headed by Pr. P. Froguel.}
+
+\cventry{Sept. 2012 -- Dec. 2015}{Biostatistician (CNRS)}{%
+    UMR CNRS 8199 - Integrated Genomics and Metabolic Diseases Modeling}{Lille}{%
+    Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments}{Headed by Pr. P. Froguel.}
+
+\cventry{Nov. 2011 -- Dec. 2011}{Biostatistician}{%
+    The French Institute of Science and Technology for Transport, Development and Networks (IFSTTAR) - UMRESTTE - UMR T 9405}{Bron}{%
+    Activities: Analysis of a mobility and accident study in secondary-school pupils}{Supervised by Dr. M. Haddak.}
+
+\cventry{Jan. 2011 -- Jun. 2011}{Biostatistician (Internship)}{%
+    Hospices Civiles de Lyon - Biostatistics Unit - UMR CNRS 5558}{Lyon}{%
+    Activities: Development of a non-parametric (on time) clustering algorithm for longitudinal data}{Supervised by Pr. R. Ecochard et Dr. C. Genolini.}
+
+\cventry{Mar. 2010 -- Jun. 2010}{Biostatistician (Internship)}{%
+    Laboratory of Biometry and Evolutionary Biology (LBBE) - UMR CNRS 5558}{Lyon}{%
+    Activities: Mathematical modelling of nosocomial rotavirus infections in pediatric ward}{Supervised by Dr. C. Kribs-Zaleta.}
+
+
+\pagebreak
+%----------------------------------------------------------------------------------------
+%	MAIN ACTIVITIES SECTION
+%----------------------------------------------------------------------------------------
+\section{Main Activities In The Last Job Position}
+\cvitem{Data Analysis}{%
+I've been analysing omics (SNP, CpG, expression, metabolites, etc.) data within numerous projects related to metabolic diseases. 
+These projects involve collaborations with national and international consortia like CKDgen, CHARGE, IMIDIA, DIRECT or more recently RHAPSODY.
+My contribution covers GWA analyses, differential methylation/expression analyses, rare variants analyses, disease progression modelling, genetic epidemiology and meta-analyses.
+}
+\cvitem{Team Management}{%
+I've been managing a team of three junior statisticians. 
+My role is to provide guidance regarding choices of statistical methodologies for analysing the data and code (mainly in R) optimisation for implementing these methodologies.
+}
+\cvitem{Research}{%
+My main research interests are \textbf{mixed models}, more recently extended to joint models.
+\textbf{Joint model}, especially the \textbf{joint likelihood approach} implemented in the R package \textit{JM} was studied in the context of Type 2 Diabetes incidence and fasting glucose progression (associated by diagnosis definition) using SNPs as biomarkers of interest \cite{canouil_jointly_2018}.
+}
+
+
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION SECTION
+%----------------------------------------------------------------------------------------
+\section{Education}
+\cventry{Oct. 2014 -- Sept. 2017}{Doctor of Philosophy (Ph.D.) in BioStatistics}{University of Lille 2}{Lille}{%
+    ``Development and Application of Statistical Methods for Multi-Omics Studies in Type 2 Diabetes: Beyond the Genome-Wide Association Studies Era''}{%
+    Supervised by Pr. P. Froguel and Dr. G. Rocheleau}
+\cventry{Sept. 2009 -- Jul. 2011}{Master's Degree in Biostatistics, Bioinformatics and Genomics}{University Claude Bernard Lyon 1}{Lyon}{%
+    Specialised in Biostatistics}{}
+\cventry{Sept. 2006 -- Jul. 2009}{Bachelor's Degree in Biology}{University Claude Bernard Lyon 1}{Lyon}{%
+    Specialised in Mathematics and Informatics for Biology}{}
+
+
+
+%----------------------------------------------------------------------------------------
+%	COMPUTER SECTION
+%----------------------------------------------------------------------------------------
+\section{Computer Skills}
+\cvitem{Basic}{\textsc{C}, \textsc{SQL}}
+\cvitem{Intermediate}{\textsc{Julia}, \textsc{Lua}, \textsc{Perl}, \textsc{Python}, \textsc{SAS}}
+\cvitem{Advanced}{\textsc{R} (Shiny, Rmarkdown, etc.), \textsc{HTML}, \textsc{css}, \textsc{LATEX}, \textsc{markdown}}
+\vspace{1em}
+\cvitem{Environment}{\textsc{Docker}, \textsc{UNIX}, \textsc{Windows}}
+
+
+
+%----------------------------------------------------------------------------------------
+%	LANGUAGES SECTION
+%----------------------------------------------------------------------------------------
+\section{Languages}
+\cvitemwithcomment{French}{Native}{}
+\cvitemwithcomment{English}{Fluent / Full Professional Proficiency}{}
+\cvitemwithcomment{Spanish}{Elementary proficiency}{}
+
+
+
+%----------------------------------------------------------------------------------------
+%	Awards
+%----------------------------------------------------------------------------------------
+\section{Awards}
+\cventry{2015}{Funding Allocation SFD-Lilly}{French speaking Diabetes Society (SFD)}{Bordeaux}{Detection of new genomic variants associated with fasting blood glucose and incidence of type 2 diabetes simultaneously}{}
+
+
+\pagebreak
+%----------------------------------------------------------------------------------------
+%	Extensions R
+%----------------------------------------------------------------------------------------
+\section{R Packages}
+\cvitem{snpEnrichment}{\textbf{R package implementing a method for calculating an enrichment statistic of a set of SNP within a GWA signal.}
+    \newline \underline{Mickaël Canouil} and Loïc Yengo (2013)
+    \newline https://cran.r-project.org/package=snpEnrichment}
+\cvitem{clere}{\textbf{R package implementing the CLERE methodology.}
+    \newline Loïc Yengo, Julien Jacques, Christophe Biernacki and \underline{Mickaël Canouil} (2014)
+    \newline https://cran.r-project.org/package=clere}
+
+
+
+%----------------------------------------------------------------------------------------
+%	Communications
+%----------------------------------------------------------------------------------------
+\section{Communications}
+\subsection{Oral Presentations}
+\begin{itemize}
+    \setlength{\itemsep}{0.5em}
+
+    \item \textbf{Julia for Intensive Scientific Computing} (\textit{half-day workshop available on GitHub})
+        \newline \underline{Mickaël Canouil}
+        \newline \textit{National Days of Higher Education and Research Software Developpement - JDEV, Bordeaux, France (2015)}
+
+    \item \textbf{Longitudinal Genetic Modelling: Revisiting Associations of SNPs Associated with Blood Fasting Glucose in Normoglycemic Individuals}
+        \newline \underline{Mickaël Canouil}, Ghislain Rocheleau, Loïc Yengo and Philippe Froguel
+        \newline \textit{Statistical Methods for Post Genomic Data - SMPGD, Lille, France (2016)}
+    
+    \item \textbf{R and Databases} (\textit{two-days training available on GitHub})
+        \newline \underline{Mickaël Canouil}
+        \newline \textit{URFIST - University of Bordeaux, Bordeaux, France (2018)}
+
+\end{itemize}
+
+\subsection{Poster Presentations}
+\begin{itemize}
+    \setlength{\itemsep}{0.5em}
+
+    \item \textbf{Application of Joint Models in Genetic Association Studies}
+        \newline Ghislain Rocheleau, \underline{Mickaël Canouil}, Loïc Yengo and Philippe Froguel
+        \newline \textit{International Genetic Epidemiology Society - IGES, Baltimore, United-States (2015)}
+
+    \item \textbf{Single Nucleotide Polymorphisms Associated With Fasting Blood Glucose Trajectory And Type 2 Diabetes Incidence: A Joint Modelling Approach}
+        \newline \underline{Mickaël Canouil}, Philippe Froguel and Ghislain Rocheleau
+        \newline \textit{International Genetic Epidemiology Society - IGES, Toronto, Canada (2016)}
+
+    \item \textbf{Single Nucleotide Polymorphisms Associated With Fasting Blood Glucose Trajectory And Type 2 Diabetes Incidence: A Joint Modelling Approach}
+        \newline \underline{Mickaël Canouil}, Philippe Froguel and Ghislain Rocheleau
+        \newline \textit{4th Symposium European Genomic Institute for Diabetes (E.g.i.d), Lille, France (2016)}
+
+    \item \textbf{Variants Génétiques Associés à la Trajectoire de la Glycémie à Jeun et à l’Incidence du Diabète de Type 2: Une Approche par Modèle Joint} (CA-075)
+        \newline \underline{Mickaël Canouil}, Philippe Froguel and Ghislain Rocheleau
+        \newline \textit{Annual Congress of Société Francophone du Diabète (SFD), Lille, France (2017)}
+
+\end{itemize}
+
+
+%----------------------------------------------------------------------------------------
+%	Publications
+%----------------------------------------------------------------------------------------
+% \section{Publications}
+\pagebreak
+\bibliographystyle{apalike}
+\bibliography{./bib/myarticles.bib}
+\nocite{%
+yengo_variable_2016,
+baumeier_hepatic_2017,
+bonnefond_relationship_2017,
+carrat_decreased_2017,
+ndiaye_expression_2017,
+verbanck_low-dose_2017,
+sung_large-scale_2018,
+mahajan_refining_2018,
+abderrahmani_increased_2018,
+canouil_jointly_2018,
+feitosa_novel_2018,
+karamitri_type_2018,
+mahajan_fine-mapping_2018
+}
+
+\par{\vspace{1em}
+\textit{As co-first author in the following articles:}
+\begin{itemize}
+  \item \cite{ndiaye_expression_2017}
+  \item \cite{verbanck_low-dose_2017}
+  \item \cite{abderrahmani_increased_2018}
+\end{itemize}
+}
+
+
+%----------------------------------------------------------------------------------------
+%	INTERESTS SECTION
+%----------------------------------------------------------------------------------------
+\section{Interests}
+% \renewcommand{\listitemsymbol}{+~} % Changes the symbol used for lists
+\cvlistitem{Movies / TV-Shows / Japanese Animation}
+\cvlistitem{Data visualisation (IMDb rating on GitHub)}
+\cvlistitem{Board games}
+\cvlistitem{Hiking}
+\cvlistitem{A little bit of reading (fanstastic novel)}
+% \cvlistitem{Running}
+% \cvitem{}{}
+
+\end{document}
