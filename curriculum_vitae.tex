@@ -44,15 +44,49 @@
 
 % To remove the cover letter, comment out this entire block
 
-% \recipient{INSERM CR1219 (Biostatistic team)\\ISPED}{146, rue Léo Saignat\\33076 Bordeaux Cedex, France} % Letter recipient
-% \date{\today} %{October 19\textsuperscript{th}, 2018} % Letter date
-% \opening{Dear Madam Virginie RONDEAU,} % Opening greeting
-% \closing{Sincerely yours,} % Closing phrase
+% \recipient{Virginie RONDEAU\\Director of Research INSERM, Ph.D.}{INSERM CR1219 (Biostatistic team) - ISPED\\146, Rue Léo Saignat\\33076 Bordeaux Cedex, France} % Letter recipient
+% \date{October 19\textsuperscript{th}, 2018} % Letter date
+% \opening{Dear Dr. Virginie RONDEAU,} % Opening greeting
+% \closing{Sincerely yours,\vspace{-2.5em}} % Closing phrase
 % \enclosure[Attached]{Curriculum Vit\ae{}} % List of enclosed documents
 % 
 % \makelettertitle % Print letter title
 % 
-% Here is my cover letter
+% I'm currently working at the CNRS UMR8199 - ``Integrated Genomics and Metabolic Diseases Modelling'' as the head of the biostatistic team.\\
+% I started working as a "Study Engineer" in September 2012 and was given the opportunity to start a Ph.D. thesis in October/November 2014 (succesfully defended in September 2017), mainly focussing on joint models applied in genetics and supervised by Dr. Ghislain ROCHELEAU and Pr. Philippe FROGUEL.\\
+% This was an opportunity to get back to mixed models, which I am interested in since my internship in 2011 (``Development of a non-parametric (on time) clustering algorithm for longitudinal data'') and extend these models to include survival models.
+% 
+% During my six years at the CNRS UMR8199 (including the three years Ph.D.), I was able to develop R packages \cite{yengo_variable_2016}, web applications using \textsc{Shiny} (R) \cite{ndiaye_expression_2017, verbanck_low-dose_2017} and write reproducible scripts from the data reading to the article using R and \textsc{Rmarkdown} \cite{canouil_jointly_2018}.\\
+% Recently, I wrote a complete analysis plan (``RHAPSODY WP3 - Pre-Diabetes progression'') using \textsc{Rmarkdown} which is included in a \textsc{Docker} image. 
+% This, combined with the standard format used for phenotypes (CDISC), allows to run the whole analysis on any cohorts' data within the same environment (Operating System, R version and R packages version).
+% 
+% I consider myself more as an applied biostatistician, which was one the reasons I started a Ph.D. and want to follow up on joint models, especially in INSERM CR1219, which showed high expertise in longitudinal and survival data analysis with for example the R package \textsc{lcmm} (``Extended Mixed Models Using Latent Classes and Latent Processes'') and the work of Dr. Hélène JACMIN-GADDA et al.\\
+% Over the years, I improved my computing skills in different programming languages particularly R, with for example \textsc{S4} object class, \textsc{Rmarkdown} and \textsc{Shiny}. 
+% This also includes code optimisation, version control using GIT and more recently code portability and environment control using Docker.
+% 
+% With my knowledge acquired during my Ph.D. on joint models and my computing skills, I believe joining your team could benefit both sides. \\
+% Thank you for considering my application. 
+% I would be happy to provide any additional information you might need.
+% 
+% \vspace{0.5em}\par{
+% \textit{\textbf{References:}}
+% \vspace{0.5em}
+% \footnotesize
+% \begin{description}
+%   \setlength{\itemsep}{0.5em}
+%   \item[Ghislain ROCHELEAU] Assistant Professor in Genetics and Genomic Sciences
+%     \begin{description}
+%       \item[Location] Mount Sinai, New-York, United States
+%       \item[Mail] ghislain.rocheleau@mssm.edu
+%     \end{description}
+%   \item[Loïc YENGO-DEMBOU] Senior Research Officer
+%     \begin{description}
+%       \item[Location] Institute for Molecular Bioscience, Brisbane, Australia
+%       \item[Mail] l.yengodimbou@imb.uq.edu.au
+%       \item[Phone] +61 7 334 62095
+%     \end{description}
+% \end{description}
+% }\vspace{0em}
 % 
 % \makeletterclosing % Print letter signature
 % \clearpage
@@ -74,11 +108,11 @@
 %\subsection{Vocational}
 
 \cventry{Jan. 2016 -- Nov. 2018}{Head of the Biostatistic Team (CNRS / Pasteur Institute Lille)}{%
-    UMR CNRS 8199 - Integrated Genomics and Metabolic Diseases Modeling}{Lille}{%
+    CNRS UMR8199 - Integrated Genomics and Metabolic Diseases Modeling}{Lille}{%
     Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments, consortium work package lead analyst, team management}{Headed by Pr. P. Froguel.}
 
 \cventry{Sept. 2012 -- Dec. 2015}{Biostatistician (CNRS)}{%
-    UMR CNRS 8199 - Integrated Genomics and Metabolic Diseases Modeling}{Lille}{%
+    CNRS UMR8199 - Integrated Genomics and Metabolic Diseases Modeling}{Lille}{%
     Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments}{Headed by Pr. P. Froguel.}
 
 \cventry{Nov. 2011 -- Dec. 2011}{Biostatistician}{%
@@ -86,11 +120,11 @@
     Activities: Analysis of a mobility and accident study in secondary-school pupils}{Supervised by Dr. M. Haddak.}
 
 \cventry{Jan. 2011 -- Jun. 2011}{Biostatistician (Internship)}{%
-    Hospices Civiles de Lyon - Biostatistics Unit - UMR CNRS 5558}{Lyon}{%
+    Hospices Civiles de Lyon - Biostatistics Unit - CNRS UMR5558}{Lyon}{%
     Activities: Development of a non-parametric (on time) clustering algorithm for longitudinal data}{Supervised by Pr. R. Ecochard et Dr. C. Genolini.}
 
 \cventry{Mar. 2010 -- Jun. 2010}{Biostatistician (Internship)}{%
-    Laboratory of Biometry and Evolutionary Biology (LBBE) - UMR CNRS 5558}{Lyon}{%
+    Laboratory of Biometry and Evolutionary Biology (LBBE) - CNRS UMR5558}{Lyon}{%
     Activities: Mathematical modelling of nosocomial rotavirus infections in pediatric ward}{Supervised by Dr. C. Kribs-Zaleta.}
 
 
@@ -100,18 +134,15 @@
 %----------------------------------------------------------------------------------------
 \section{Main Activities In The Last Job Position}
 \cvitem{Data Analysis}{%
-I've been analysing omics (SNP, CpG, expression, metabolites, etc.) data within numerous projects related to metabolic diseases. 
+I've been analysing omics (SNP, CpG, expression, metabolites, etc.) data within numerous projects related to metabolic diseases, such as Type 2 Diabetes. 
 These projects involve collaborations with national and international consortia like CKDgen, CHARGE, IMIDIA, DIRECT or more recently RHAPSODY.
-My contribution covers GWA analyses, differential methylation/expression analyses, rare variants analyses, disease progression modelling, genetic epidemiology and meta-analyses.
-}
+My contribution covers Genome-Wide Association Studies (GWAS), differential methylation/expression analyses, metabolomics analyses, rare variants analyses (clustering approach), disease progression modelling, genetic epidemiology and meta-analyses.}
 \cvitem{Team Management}{%
 I've been managing a team of three junior statisticians. 
-My role is to provide guidance regarding choices of statistical methodologies for analysing the data and code (mainly in R) optimisation for implementing these methodologies.
-}
+My role is to provide guidance regarding choices of statistical methodologies for analysing the data and code optimisation for implementing these methodologies in large scale omics data.}
 \cvitem{Research}{%
 My main research interests are \textbf{mixed models}, more recently extended to joint models.
-\textbf{Joint model}, especially the \textbf{joint likelihood approach} implemented in the R package \textit{JM} was studied in the context of Type 2 Diabetes incidence and fasting glucose progression (associated by diagnosis definition) using SNPs as biomarkers of interest \cite{canouil_jointly_2018}.
-}
+\textbf{Joint model}, especially the \textbf{joint likelihood approach} implemented in the R package \textsc{JM} was studied in the context of Type 2 Diabetes incidence and fasting glucose progression (associated by diagnosis definition) using SNPs as biomarkers of interest \cite{canouil_jointly_2018}.}
 
 
 
@@ -133,9 +164,9 @@ My main research interests are \textbf{mixed models}, more recently extended to 
 %	COMPUTER SECTION
 %----------------------------------------------------------------------------------------
 \section{Computer Skills}
-\cvitem{Basic}{\textsc{C}, \textsc{SQL}}
+\cvitem{Basic}{\textsc{C/C++}, \textsc{SQL}, \textsc{NoSQL}}
 \cvitem{Intermediate}{\textsc{Julia}, \textsc{Lua}, \textsc{Perl}, \textsc{Python}, \textsc{SAS}}
-\cvitem{Advanced}{\textsc{R} (Shiny, Rmarkdown, etc.), \textsc{HTML}, \textsc{css}, \textsc{LATEX}, \textsc{markdown}}
+\cvitem{Advanced}{\textsc{R} (Shiny, Rmarkdown, S4, etc.), \textsc{HTML}, \textsc{css}, \textsc{LATEX}, \textsc{markdown}}
 \vspace{1em}
 \cvitem{Environment}{\textsc{Docker}, \textsc{UNIX}, \textsc{Windows}}
 
@@ -180,7 +211,7 @@ My main research interests are \textbf{mixed models}, more recently extended to 
 \begin{itemize}
     \setlength{\itemsep}{0.5em}
 
-    \item \textbf{Julia for Intensive Scientific Computing} (\textit{half-day workshop available on GitHub})
+    \item \textbf{Julia for Intensive Scientific Computing} (\textit{half-day workshop available on GitHub, in French})
         \newline \underline{Mickaël Canouil}
         \newline \textit{National Days of Higher Education and Research Software Developpement - JDEV, Bordeaux, France (2015)}
 
@@ -188,9 +219,13 @@ My main research interests are \textbf{mixed models}, more recently extended to 
         \newline \underline{Mickaël Canouil}, Ghislain Rocheleau, Loïc Yengo and Philippe Froguel
         \newline \textit{Statistical Methods for Post Genomic Data - SMPGD, Lille, France (2016)}
     
-    \item \textbf{R and Databases} (\textit{two-days training available on GitHub})
+    \item \textbf{R and Databases} (\textit{two-days training available on GitHub, in French})
         \newline \underline{Mickaël Canouil}
         \newline \textit{URFIST - University of Bordeaux, Bordeaux, France (2018)}
+        
+    \item \textbf{Jointly Modelling SNPs with Survival \& Longitudinal Trait?} (\textit{available on GitHub, in French})
+        \newline \underline{Mickaël Canouil}
+        \newline \textit{Thematic Day 'Statistic \& Genomic' of the (French) Interdisciplinary Network about Statistic - RIS, Paris, France (2018)}
 
 \end{itemize}
 
