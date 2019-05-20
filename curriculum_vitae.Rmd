@@ -20,12 +20,11 @@ output:
 ## Contact Info {#contact}
 
 - <i class="fa fa-user"></i> Head of the Biostatistic Team
-- <i class="fa fa-university"></i> EGID - UMR 8199
+- <i class="fa fa-university"></i> [EGID - UMR 8199](http://www.good.cnrs.fr/?lang=en)
 - <i class="fa fa-map-marker"></i> Lille, France
-- <i class="fa fa-envelope"></i> mickael.canouil@cnrs.fr
+- <i class="fa fa-envelope"></i> [mickael.canouil [at] cnrs.fr](mailto:mickael.canouil@cnrs.fr)
 - <i class="fa fa-github"></i> [github.com/mcanouil](https://github.com/mcanouil)
 - <i class="fa fa-phone"></i> +33 (0) 374 00 81 29
-- For more information, please contact me via email.
 
 
 ## Computer Skills {#skills}
@@ -183,6 +182,36 @@ Jan 2016 - Present
 - Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments, team management
 
 
+## Teaching Experience {data-icon=chalkboard-teacher}
+
+### Julia for Intensive Scientific Computing
+
+Half-day workshop (in French)  
+Journées nationales du DEVeloppement logiciel  
+(JDEV)
+
+Bordeaux, France
+
+2015
+
+::: aside
+[GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/julia_tp)
+:::
+
+### R and Databases
+
+Two-days training (in French)  
+URFIST  
+University of Bordeaux
+
+Bordeaux, France
+
+2018
+
+::: aside
+[GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/rdatabase)
+:::
+
 ## Awards {data-icon=trophy}
 
 ### Funding Allocation SFD-Lilly
@@ -244,37 +273,6 @@ Apr 2019
 
 ::: aside
 [GitHub](https://github.com/mcanouil/CARoT/)
-:::
-
-
-## Teaching Experience {data-icon=chalkboard-teacher}
-
-### Julia for Intensive Scientific Computing
-
-Half-day workshop (in French)  
-Journées nationales du DEVeloppement logiciel  
-(JDEV)
-
-Bordeaux, France
-
-2015
-
-::: aside
-[GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/julia_tp)
-:::
-
-### R and Databases
-
-Two-days training (in French)  
-URFIST  
-University of Bordeaux
-
-Bordeaux, France
-
-2018
-
-::: aside
-[GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/rdatabase)
 :::
 
 
