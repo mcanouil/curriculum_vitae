@@ -95,7 +95,7 @@ University of Lille
 
 Lille, France
 
-Oct. 2014 - Sept. 2017
+Oct 2014 - Sept 2017
 
 Thesis: Development and Application of Statistical Methods for Multi-Omics Studies in Type 2 Diabetes: Beyond the Genome-Wide Association Studies Era
 
@@ -105,7 +105,7 @@ University Claude Bernard Lyon 1
 
 Lyon, France
 
-Sept. 2009 - Jul. 2011
+Sept 2009 - Jul 2011
 
 ### Bachelor's Degree in Biology (Specialised in Biostatistics)
 
@@ -113,7 +113,7 @@ University Claude Bernard Lyon 1
 
 Lyon, France
 
-Sept. 2006 - Jul. 2009
+Sept 2006 - Jul 2009
 
 
 ## Professional & Research Experience {data-icon=laptop}
@@ -126,7 +126,7 @@ UMR CNRS 5558
 
 Lyon, France
 
-Mar. 2010 - Jun. 2010
+Mar 2010 - Jun 2010
 
 - Activities: Mathematical Modelling of Nosocomial Rotavirus Infections in Pediatric Ward
 
@@ -138,7 +138,7 @@ UMR CNRS 5558
 
 Lyon, France
 
-Jan. 2011 - Jun. 2011
+Jan 2011 - Jun 2011
 
 - Activities: Development of a Non-Parametric (on Time) Clustering Algorithm for Longitudinal Data
 
@@ -152,7 +152,7 @@ UMRESTTE - UMR T9405
 
 Bron, France
 
-Nov. 2011 - Dec. 2011
+Nov 2011 - Dec 2011
 
 - Activities: Analysis of a mobility and accident study in secondary-school pupils
 
@@ -165,7 +165,7 @@ EGID - UMR 8199
 
 Lille, France
 
-Sept. 2012 - Dec. 2015
+Sept 2012 - Dec 2015
 
 - Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments
 
@@ -178,7 +178,7 @@ EGID - UMR 8199
 
 Lille, France
 
-Jan. 2016 - Present
+Jan 2016 - Present
 
 - Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments, team management
 
@@ -204,7 +204,7 @@ Mickaël Canouil and Loïc Yengo
 
 N/A
 
-Apr. 2013
+Apr 2013
 
 ::: aside
 [CRAN](https://cran.r-project.org/package=snpEnrichment)
@@ -216,7 +216,7 @@ Loïc Yengo, Julien Jacques, Christophe Biernacki and Mickaël Canouil
 
 N/A
 
-Feb. 2014
+Feb 2014
 
 ::: aside
 [CRAN](https://cran.r-project.org/package=clere)
@@ -228,7 +228,7 @@ Mickaël Canouil, Gerard Bouland and Roderick Slieker
 
 N/A
 
-Apr. 2019
+Apr 2019
 
 ::: aside
 [CRAN](https://cran.r-project.org/package=NACHO)
@@ -240,7 +240,7 @@ Mickaël Canouil, Mathilde Boissel and Lijiao Ning
 
 N/A
 
-Apr. 2019
+Apr 2019
 
 ::: aside
 [GitHub](https://github.com/mcanouil/CARoT/)
@@ -374,7 +374,7 @@ read_bib <- function(path) {
     authors <- paste(paste(authors[-length(authors)], collapse = ", "), authors[length(authors)], sep = " and ")
     data.frame(
       title = stringr::str_to_title(clean_field("title", .x), locale = "en"),
-      month = paste0(Hmisc::capitalize(clean_field("month", .x)), "."),
+      month = paste0(Hmisc::capitalize(clean_field("month", .x)), ""),
       year = clean_field("year", .x),
       doi = clean_field("doi", .x),
       authors = authors, 
@@ -388,10 +388,10 @@ read_bib <- function(path) {
   all_bib <- do.call("rbind.data.frame", all_bib)
   all_bib[["month"]] <- factor(
     x = all_bib[["month"]],
-    levels = c(
-      "Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", 
-      "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."
-    )
+    levels = paste0(c(
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ), "")
   )
   all_bib[["doi"]] <- ifelse(
     test = grepl("^http", all_bib[["doi"]]), 
