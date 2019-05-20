@@ -95,7 +95,7 @@ University of Lille
 
 Lille, France
 
-Oct 2014 - Sept 2017
+Oct 2014 - Sep 2017
 
 Thesis: Development and Application of Statistical Methods for Multi-Omics Studies in Type 2 Diabetes: Beyond the Genome-Wide Association Studies Era
 
@@ -105,7 +105,7 @@ University Claude Bernard Lyon 1
 
 Lyon, France
 
-Sept 2009 - Jul 2011
+Sep 2009 - Jul 2011
 
 ### Bachelor's Degree in Biology (Specialised in Biostatistics)
 
@@ -113,7 +113,7 @@ University Claude Bernard Lyon 1
 
 Lyon, France
 
-Sept 2006 - Jul 2009
+Sep 2006 - Jul 2009
 
 
 ## Professional & Research Experience {data-icon=laptop}
@@ -165,7 +165,7 @@ EGID - UMR 8199
 
 Lille, France
 
-Sept 2012 - Dec 2015
+Sep 2012 - Dec 2015
 
 - Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments
 
