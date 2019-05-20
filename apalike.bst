@@ -1073,11 +1073,11 @@ REVERSE {reverse.pass}
 %                               Now that the label is right we sort for real,
 %                               on sort.label then year then title.  This is
 %                               for the second sorting pass.
-FUNCTION {bib.sort.order}
-{ sort.label
+FUNCTION {bib.sort.order} % sort order for bibliography
+{ year field.or.null sortify
   "    "
   *
-  year field.or.null sortify
+  sort.label
   *
   "    "
   *

@@ -6,5 +6,5 @@ pdflatex curriculum_vitae
 pdflatex curriculum_vitae 
 
 
-rm *.aux *.bbl *.log *.blg *.out
+rm *.aux *.bbl *.log *.blg *.out *.bcf
 
