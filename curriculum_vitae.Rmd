@@ -229,9 +229,7 @@ N/A
 
 Apr 2019
 
-::: aside
-[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/CARoT/)
-:::
+[https://github.com/mcanouil/CARoT/](https://github.com/mcanouil/CARoT/)
 
 ### NACHO: NACHO: NanoString Quality Control Dashboard
 
@@ -241,9 +239,7 @@ N/A
 
 Apr 2019
 
-::: aside
-[CRAN](https://cran.r-project.org/package=NACHO)
-:::
+[https://cran.r-project.org/package=NACHO](https://cran.r-project.org/package=NACHO)
 
 ### clere: Simultaneous Variables Clustering and Regression
 
@@ -253,9 +249,7 @@ N/A
 
 Feb 2014
 
-::: aside
-[CRAN](https://cran.r-project.org/package=clere)
-:::
+[https://cran.r-project.org/package=clere](https://cran.r-project.org/package=clere)
 
 ### snpEnrichment: SNPs Enrichment Analysis
 
@@ -265,9 +259,7 @@ N/A
 
 Apr 2013
 
-::: aside
-[CRAN](https://cran.r-project.org/package=snpEnrichment)
-:::
+[https://cran.r-project.org/package=snpEnrichment](https://cran.r-project.org/package=snpEnrichment)
 
 
 ## Awards {data-icon=trophy}
