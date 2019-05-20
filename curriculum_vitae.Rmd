@@ -373,7 +373,7 @@ read_bib <- function(path) {
     authors <- paste(authors[, 2], authors[, 1])
     authors <- paste(paste(authors[-length(authors)], collapse = ", "), authors[length(authors)], sep = " and ")
     data.frame(
-      title = clean_field("title", .x),
+      title = stringr::str_to_title(clean_field("title", .x), locale = "en"),
       month = paste0(Hmisc::capitalize(clean_field("month", .x)), "."),
       year = clean_field("year", .x),
       doi = clean_field("doi", .x),
