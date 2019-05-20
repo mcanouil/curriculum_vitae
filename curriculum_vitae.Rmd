@@ -416,8 +416,7 @@ format_bib <- function(bib, author) {
         )
       } else {
         cat(
-          paste(split_authors[1:9], collapse = ", "), 
-          ", *...*, ",
+          paste(c(split_authors[1:9], "*...*, "), collapse = ", "), 
           paste0(grep(pattern = author, x = split_authors, value = TRUE), "<sup>", pos_author, "</sup>"),
           "*et al.*"
         )
