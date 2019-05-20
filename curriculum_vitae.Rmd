@@ -96,9 +96,9 @@ Lille, France
 
 Oct 2014 - Sep 2017
 
-Thesis: Development and Application of Statistical Methods for Multi-Omics Studies in Type 2 Diabetes: Beyond the Genome-Wide Association Studies Era
+Thesis: *Development and Application of Statistical Methods for Multi-Omics Studies in Type 2 Diabetes: Beyond the Genome-Wide Association Studies Era*
 
-### Master's Degree in Biostatistics, Bioinformatics and Genomics (Specialised in Biostatistics)
+### Master's Degree in Biostatistics, Bioinformatics and Genomics (*Specialised in Biostatistics*)
 
 University Claude Bernard Lyon 1
 
@@ -106,7 +106,12 @@ Lyon, France
 
 Sep 2009 - Jul 2011
 
-### Bachelor's Degree in Biology (Specialised in Biostatistics)
+Internships:
+
+- *Mathematical Modelling of Nosocomial Rotavirus Infections in Pediatric Ward*
+- *Development of a Non-Parametric (on Time) Clustering Algorithm for Longitudinal Data*
+
+### Bachelor's Degree in Biology (*Specialised in Biostatistics*)
 
 University Claude Bernard Lyon 1
 
@@ -116,57 +121,6 @@ Sep 2006 - Jul 2009
 
 
 ## Professional & Research Experience {data-icon=laptop}
-
-### Biostatistician (Internship)
-
-Laboratory of Biometry and Evolutionary Biology  
-(LBBE)  
-UMR CNRS 5558
-
-Lyon, France
-
-Mar 2010 - Jun 2010
-
-- Activities: Mathematical Modelling of Nosocomial Rotavirus Infections in Pediatric Ward
-
-### Biostatistician (Internship)
-
-Hospices Civiles de Lyon  
-Biostatistics Unit  
-UMR CNRS 5558
-
-Lyon, France
-
-Jan 2011 - Jun 2011
-
-- Activities: Development of a Non-Parametric (on Time) Clustering Algorithm for Longitudinal Data
-
-### Biostatistician
-
-The French Institute of Science  
-and Technology for Transport,  
-Development and Networks
-(IFSTTAR)  
-UMRESTTE - UMR T9405
-
-Bron, France
-
-Nov 2011 - Dec 2011
-
-- Activities: Analysis of a mobility and accident study in secondary-school pupils
-
-### Biostatistician
-
-Laboratory of Integrated Genomics  
-and Metabolic Diseases Modeling  
-EGID - UMR 8199  
-(European Genomics Institute for Diabetes)
-
-Lille, France
-
-Sep 2012 - Dec 2015
-
-- Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments
 
 ### Head of the Biostatistic Team
 
@@ -179,15 +133,81 @@ Lille, France
 
 Jan 2016 - Present
 
-- Activities: Genome-wide association studies, experimental design, -omics data analysis, methodological developments, team management
+Activities: *Genome-wide association studies, experimental design, -omics data analysis, methodological developments, team management*
+
+### Biostatistician
+
+Laboratory of Integrated Genomics  
+and Metabolic Diseases Modeling  
+EGID - UMR 8199  
+(European Genomics Institute for Diabetes)
+
+Lille, France
+
+Sep 2012 - Dec 2015
+
+Activities: *Genome-wide association studies, experimental design, -omics data analysis, methodological developments*
+
+### Biostatistician
+
+French Institute of Science and Technology for  
+Transport, Development and Networks 
+(IFSTTAR)  
+UMRESTTE - UMR T9405
+
+Bron, France
+
+Nov 2011 - Dec 2011
+
+Activities: *Analysis of a mobility and accident study in secondary-school pupils*
+
+### Biostatistician (Internship)
+
+Hospices Civiles de Lyon  
+Biostatistics Unit  
+UMR CNRS 5558
+
+Lyon, France
+
+Jan 2011 - Jun 2011
+
+Activities: *Development of a Non-Parametric (on Time) Clustering Algorithm for Longitudinal Data*
+
+### Biostatistician (Internship)
+
+Biometry and Evolutionary Biology laboratory  
+(LBBE)  
+UMR CNRS 5558
+
+Lyon, France
+
+Mar 2010 - Jun 2010
+
+Activities: *Mathematical Modelling of Nosocomial Rotavirus Infections in Pediatric Ward*
 
 
 ## Teaching Experience {data-icon=chalkboard-teacher}
 
+### R and Databases
+
+Two-days training (in French)  
+"Unités Régionales de Formation  
+à l'Information Scientifique et Technique"  
+(URFIST)
+
+Bordeaux, France
+
+2018
+
+::: aside
+[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/rdatabase)
+:::
+
 ### Julia for Intensive Scientific Computing
 
 Half-day workshop (in French)  
-Journées nationales du DEVeloppement logiciel  
+"Journées nationales du  
+DEVeloppement logiciel"  
 (JDEV)
 
 Bordeaux, France
@@ -195,60 +215,22 @@ Bordeaux, France
 2015
 
 ::: aside
-[GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/julia_tp)
+[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/julia_tp)
 :::
-
-### R and Databases
-
-Two-days training (in French)  
-URFIST  
-University of Bordeaux
-
-Bordeaux, France
-
-2018
-
-::: aside
-[GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/rdatabase)
-:::
-
-## Awards {data-icon=trophy}
-
-### Funding Allocation SFD-Lilly
-
-French speaking Diabetes Society (SFD)
-
-Bordeaux, France
-
-2015
-
-- Detection of new genomic variants associated with fasting blood glucose and incidence of type 2 diabetes simultaneously
 
 
 ## R Packages {data-icon=code}
 
-### snpEnrichment: SNPs Enrichment Analysis
+### CARoT: Centralised and Automated RepOrting Tools
 
-Mickaël Canouil and Loïc Yengo
-
-N/A
-
-Apr 2013
-
-::: aside
-[CRAN](https://cran.r-project.org/package=snpEnrichment)
-:::
-
-### clere: Simultaneous Variables Clustering and Regression
-
-Loïc Yengo, Julien Jacques, Christophe Biernacki and Mickaël Canouil
+Mickaël Canouil, Mathilde Boissel and Lijiao Ning 
 
 N/A
 
-Feb 2014
+Apr 2019
 
 ::: aside
-[CRAN](https://cran.r-project.org/package=clere)
+[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/CARoT/)
 :::
 
 ### NACHO: NACHO: NanoString Quality Control Dashboard
@@ -263,20 +245,65 @@ Apr 2019
 [CRAN](https://cran.r-project.org/package=NACHO)
 :::
 
-### CARoT: Centralised and Automated RepOrting Tools
+### clere: Simultaneous Variables Clustering and Regression
 
-Mickaël Canouil, Mathilde Boissel and Lijiao Ning 
+Loïc Yengo, Julien Jacques, Christophe Biernacki and Mickaël Canouil
 
 N/A
 
-Apr 2019
+Feb 2014
 
 ::: aside
-[GitHub](https://github.com/mcanouil/CARoT/)
+[CRAN](https://cran.r-project.org/package=clere)
+:::
+
+### snpEnrichment: SNPs Enrichment Analysis
+
+Mickaël Canouil and Loïc Yengo
+
+N/A
+
+Apr 2013
+
+::: aside
+[CRAN](https://cran.r-project.org/package=snpEnrichment)
+:::
+
+
+## Awards {data-icon=trophy}
+
+### Funding Allocation SFD-Lilly
+
+"Société Francophone du Diabète  
+(SFD)
+
+Bordeaux, France
+
+2015
+
+Project: *Detection of new genomic variants associated with fasting blood glucose and incidence of type 2 diabetes simultaneously*
+
+::: aside
+[sfdiabete.org](https://www.sfdiabete.org/medical/la-recherche/laureats-sfd/allocations-2015-les-laureats)
 :::
 
 
 ## Oral communications {data-icon=comment-dots}
+
+### Jointly Modelling SNPs with Survival & Longitudinal Trait
+
+Thematic Day "Statistic & Genomic"  
+of the Réseau Interdisciplinaire  
+autour de la Statistique  
+(RIS)
+
+Paris, France
+
+2018
+
+::: aside
+[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/joint_model)
+:::
 
 ### Longitudinal Genetic Modelling: Revisiting Associations of SNPs Associated with Blood Fasting Glucose in Normoglycemic Individuals
 
@@ -287,40 +314,19 @@ Lille, France
 
 2016
 
-### Jointly Modelling SNPs with Survival & Longitudinal Trait
-
-Thematic Day "Statistic & Genomic"  
-of the  
-Réseau Interdisciplinaire autour de la Statistique  
-(RIS)
-
-Paris, France
-
-2018
-
-::: aside
-[GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/joint_model)
-:::
 
 ## Poster communications {data-icon=file}
 
-### Application of Joint Models in Genetic Association Studies
+### "Variants Génétiques Associés à la Trajectoire de la Glycémie à Jeun et à l’Incidence du Diabète de Type 2: Une Approche par Modèle Joint" (CA-075)
 
-International Genetic Epidemiology Society  
-(IGES)
+Annual Congress  
+of  
+"Société Francophone du Diabète"  
+(SFD)
 
-Baltimore, United-States
+Lille, France
 
-2015
-
-### Single Nucleotide Polymorphisms Associated With Fasting Blood Glucose Trajectory And Type 2 Diabetes Incidence: A Joint Modelling Approach
-
-International Genetic Epidemiology Society  
-(IGES)
-
-Toronto, Canada
-
-2016
+2017
 
 ### Single Nucleotide Polymorphisms Associated With Fasting Blood Glucose Trajectory And Type 2 Diabetes Incidence: A Joint Modelling Approach
 
@@ -332,15 +338,23 @@ Lille, France
 
 2016
 
-### "Variants Génétiques Associés à la Trajectoire de la Glycémie à Jeun et à l’Incidence du Diabète de Type 2: Une Approche par Modèle Joint" (CA-075)
+### Single Nucleotide Polymorphisms Associated With Fasting Blood Glucose Trajectory And Type 2 Diabetes Incidence: A Joint Modelling Approach
 
-Annual Congress  
-"Société Francophone du Diabète"  
-(SFD)
+International Genetic Epidemiology Society  
+(IGES)
 
-Lille, France
+Toronto, Canada
 
-2017
+2016
+
+### Application of Joint Models in Genetic Association Studies
+
+International Genetic Epidemiology Society  
+(IGES)
+
+Baltimore, United-States
+
+2015
 
 
 ## Publications {data-icon=newspaper}
@@ -397,7 +411,7 @@ read_bib <- function(path) {
     no = paste0("https://www.doi.org/", all_bib[["doi"]])
   )
   
-  all_bib <- all_bib[order(all_bib[["year"]], all_bib[["month"]]), ]
+  all_bib <- all_bib[order(all_bib[["year"]], all_bib[["month"]], decreasing = TRUE), ]
 }
 
 format_bib <- function(bib, author) {
@@ -435,7 +449,7 @@ format_bib <- function(bib, author) {
     cat(paste(bib[ipub, "month"], bib[ipub, "year"]), "\n\n")
     cat("\n")
     cat("::: aside\n")
-    cat("[", bib[ipub, "journal"],"](",  bib[ipub, "doi"], ")\n", sep = "")
+    cat("*[", bib[ipub, "journal"],"](",  bib[ipub, "doi"], ")*\n", sep = "")
     if (bib[["first"]][ipub]) {
       cat("\n")
       cat("<sup>†</sup> As first or co-first author.\n")
