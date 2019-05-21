@@ -3,17 +3,18 @@ title: "Mickaël Canouil - Curriculum Vitæ"
 author: Mickaël Canouil
 output:
   pagedown::html_resume:
-    css: ["resume.css", "curriculum_vitae.css"]
+    css: ["css/resume.css", "css/curriculum_vitae.css"]
     mathjax: null
 ---
 
 ```{r, echo = FALSE, eval = FALSE, results = "hide"}
-file.copy(system.file("resources", "css", "resume.css", package = "pagedown"), "resume.css")
+file.copy(system.file("resources", "css", "resume.css", package = "pagedown"), "css/resume.css")
 ```
 
 # Aside
 
-![Mickaël Canouil](https://avatars3.githubusercontent.com/u/8896044){width=80%}
+<!-- ![Mickaël Canouil](https://avatars3.githubusercontent.com/u/8896044){width=80%} -->
+![Mickaël Canouil](pictures/id_picture.png){width=240px}
 
 
 <!-- > The best thing about being a statistician is that you get to play in everyone’s backyard." -->

@@ -1,0 +1,18 @@
+@page {
+  size: a4 portrait;
+  margin: 1in 0.5in 1in 0.25in;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+} 
+
+#contact {
+  color: #000;
+}
+
+#skills {
+  line-height: 1.1;
+  font-size: 1.rem;
+}

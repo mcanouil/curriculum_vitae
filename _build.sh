@@ -1,14 +1,16 @@
 #!/bin/sh
 
+cd latex/
+
 pdflatex curriculum_vitae
 bibtex curriculum_vitae
 pdflatex curriculum_vitae 
 pdflatex curriculum_vitae 
-
-
 rm *.aux *.bbl *.log *.blg *.out
 
-rm -R curriculum_vitae_files
+cd ../
+
+rm -R *_files
 rm *.html
 
 
