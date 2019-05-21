@@ -11,6 +11,109 @@ output:
 file.copy(system.file("resources", "css", "resume.css", package = "pagedown"), "css/resume.css")
 ```
 
+```{r, results = "hide", eval = TRUE, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
+read_bib <- function(path) {
+  big_file <- paste(readLines(path), collapse = "")
+  big_file <- unlist(strsplit(x = big_file, split = "@", fixed = TRUE))
+  big_file <- big_file[nchar(big_file)!=0]
+  
+  read_article <- function(.x) {
+    clean_field <- function(pattern, x) {
+      gsub(
+        pattern = paste0("^", pattern, " = "), 
+        replacement = "", 
+        x = gsub(
+          pattern = ",$", 
+          replacement = "", 
+          x = gsub(
+            pattern = "[{}]", 
+            replacement = "", 
+            x = grep(paste0("^", pattern), x, value = TRUE)
+         )
+        )
+      )
+    }
+    authors <- do.call("rbind", strsplit(unlist(strsplit(clean_field("author", .x), " and ")), ", "))
+    authors <- paste(authors[, 2], authors[, 1])
+    authors <- paste(paste(authors[-length(authors)], collapse = ", "), authors[length(authors)], sep = " and ")
+    data.frame(
+      title = clean_field("title", .x),
+      month = gsub("May.", "May", paste0(Hmisc::capitalize(clean_field("month", .x)), ".")),
+      year = clean_field("year", .x),
+      doi = clean_field("doi", .x),
+      authors = authors, 
+      journal = clean_field("journal", .x),
+      first = clean_field("first", .x),
+      stringsAsFactors = FALSE
+    )
+  }
+  
+  all_bib <- lapply(strsplit(x = big_file, split = "\t"), read_article)
+  all_bib <- do.call("rbind.data.frame", all_bib)
+  all_bib[["month"]] <- factor(
+    x = all_bib[["month"]],
+    levels = gsub("May.", "May", paste0(c(
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ), "."))
+  )
+  all_bib[["doi"]] <- ifelse(
+    test = grepl("^http", all_bib[["doi"]]), 
+    yes = all_bib[["doi"]], 
+    no = paste0("https://www.doi.org/", all_bib[["doi"]])
+  )
+  
+  all_bib <- all_bib[order(all_bib[["year"]], all_bib[["month"]], decreasing = TRUE), ]
+}
+
+format_bib <- function(bib, author) {
+  for (ipub in seq_len(nrow(bib))) {
+    cat("\n")
+    cat("###", bib[ipub, "title"], "\n\n")
+    cat("\n")
+    split_authors <- unlist(strsplit(strsplit(bib[["authors"]][ipub], ", ")[[1]], " and "))
+    split_authors <- gsub(author, paste0("<u>", author, "</u>", if (bib[["first"]][ipub]) "<sup>†</sup>" else ""), split_authors)
+    pos_author <- grep(author, split_authors)
+    if (length(split_authors) > 10) {
+      if (pos_author <= 10) {
+        cat(
+          paste(split_authors[1:10], collapse = ", "), 
+          "*et al.*"
+        )
+      } else {
+        cat(
+          paste(c(split_authors[1:9], "*...*, "), collapse = ", "), 
+          paste0(grep(pattern = author, x = split_authors, value = TRUE), "<sup>", pos_author, "</sup>"),
+          "*et al.*"
+        )
+      }
+    } else {
+      cat(
+        paste(split_authors[-length(split_authors)], collapse = ", "), 
+        split_authors[length(split_authors)], 
+        sep = " and "
+      )
+    }
+    cat("\n")
+    cat("\n")
+    cat("N/A\n\n")
+    cat("\n")
+    cat(paste(bib[ipub, "month"], bib[ipub, "year"]), "\n\n")
+    cat("\n")
+    cat("::: aside\n")
+    cat("*[", bib[ipub, "journal"],"](",  bib[ipub, "doi"], ")*\n", sep = "")
+    if (bib[["first"]][ipub]) {
+      cat("\n")
+      cat("<sup>†</sup> As first or co-first author.\n")
+      cat("\n")
+    }
+    cat(":::\n")
+    cat("\n")
+  }
+}
+```
+
+
 # Aside
 
 <!-- ![Mickaël Canouil](https://avatars3.githubusercontent.com/u/8896044){width=80%} -->
@@ -369,109 +472,13 @@ Baltimore, United-States
 2015
 
 
-## Publications {data-icon=newspaper}
+<!-- ## Publications {data-icon=newspaper} -->
 
 ```{r, results = "asis", eval = TRUE, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
-read_bib <- function(path) {
-  big_file <- paste(readLines(path), collapse = "")
-  big_file <- unlist(strsplit(x = big_file, split = "@", fixed = TRUE))
-  big_file <- big_file[nchar(big_file)!=0]
-  
-  read_article <- function(.x) {
-    clean_field <- function(pattern, x) {
-      gsub(
-        pattern = paste0("^", pattern, " = "), 
-        replacement = "", 
-        x = gsub(
-          pattern = ",$", 
-          replacement = "", 
-          x = gsub(
-            pattern = "[{}]", 
-            replacement = "", 
-            x = grep(paste0("^", pattern), x, value = TRUE)
-         )
-        )
-      )
-    }
-    authors <- do.call("rbind", strsplit(unlist(strsplit(clean_field("author", .x), " and ")), ", "))
-    authors <- paste(authors[, 2], authors[, 1])
-    authors <- paste(paste(authors[-length(authors)], collapse = ", "), authors[length(authors)], sep = " and ")
-    data.frame(
-      title = clean_field("title", .x),
-      month = gsub("May.", "May", paste0(Hmisc::capitalize(clean_field("month", .x)), ".")),
-      year = clean_field("year", .x),
-      doi = clean_field("doi", .x),
-      authors = authors, 
-      journal = clean_field("journal", .x),
-      first = clean_field("first", .x),
-      stringsAsFactors = FALSE
-    )
-  }
-  
-  all_bib <- lapply(strsplit(x = big_file, split = "\t"), read_article)
-  all_bib <- do.call("rbind.data.frame", all_bib)
-  all_bib[["month"]] <- factor(
-    x = all_bib[["month"]],
-    levels = gsub("May.", "May", paste0(c(
-      "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
-      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    ), "."))
-  )
-  all_bib[["doi"]] <- ifelse(
-    test = grepl("^http", all_bib[["doi"]]), 
-    yes = all_bib[["doi"]], 
-    no = paste0("https://www.doi.org/", all_bib[["doi"]])
-  )
-  
-  all_bib <- all_bib[order(all_bib[["year"]], all_bib[["month"]], decreasing = TRUE), ]
-}
-
-format_bib <- function(bib, author) {
-  for (ipub in seq_len(nrow(bib))) {
-    cat("\n")
-    cat("###", bib[ipub, "title"], "\n\n")
-    cat("\n")
-    split_authors <- unlist(strsplit(strsplit(bib[["authors"]][ipub], ", ")[[1]], " and "))
-    split_authors <- gsub(author, paste0("<u>", author, "</u>", if (bib[["first"]][ipub]) "<sup>†</sup>" else ""), split_authors)
-    pos_author <- grep(author, split_authors)
-    if (length(split_authors) > 10) {
-      if (pos_author <= 10) {
-        cat(
-          paste(split_authors[1:10], collapse = ", "), 
-          "*et al.*"
-        )
-      } else {
-        cat(
-          paste(c(split_authors[1:9], "*...*, "), collapse = ", "), 
-          paste0(grep(pattern = author, x = split_authors, value = TRUE), "<sup>", pos_author, "</sup>"),
-          "*et al.*"
-        )
-      }
-    } else {
-      cat(
-        paste(split_authors[-length(split_authors)], collapse = ", "), 
-        split_authors[length(split_authors)], 
-        sep = " and "
-      )
-    }
-    cat("\n")
-    cat("\n")
-    cat("N/A\n\n")
-    cat("\n")
-    cat(paste(bib[ipub, "month"], bib[ipub, "year"]), "\n\n")
-    cat("\n")
-    cat("::: aside\n")
-    cat("*[", bib[ipub, "journal"],"](",  bib[ipub, "doi"], ")*\n", sep = "")
-    if (bib[["first"]][ipub]) {
-      cat("\n")
-      cat("<sup>†</sup> As first or co-first author.\n")
-      cat("\n")
-    }
-    cat(":::\n")
-    cat("\n")
-  }
-}
-
-format_bib(read_bib("./bib/myarticles.bib"), "Mickaël Canouil")
+articles <- read_bib("./bib/myarticles.bib")
+cat("\n")
+cat("## Publications (", format(nrow(articles), big.mark = ","), "){data-icon=newspaper}\n\n", sep = "")
+cat("\n")
+format_bib(articles, "Mickaël Canouil")
 ```
 
