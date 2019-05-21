@@ -231,7 +231,7 @@ Apr 2019
 
 [https://github.com/mcanouil/CARoT/](https://github.com/mcanouil/CARoT/)
 
-### NACHO: NACHO: NanoString Quality Control Dashboard
+### NACHO: NanoString Quality Control Dashboard
 
 Mickaël Canouil, Gerard Bouland and Roderick Slieker
 
