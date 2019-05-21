@@ -1,11 +1,10 @@
 ---
-title: "Mickaël Canouil"
-subtitle: "Curriculum Vitæ"
+title: "Mickaël Canouil - Curriculum Vitæ"
 author: Mickaël Canouil
-date: "`r Sys.Date()`"
 output:
   pagedown::html_resume:
     self_contained: false
+    css: resume.css
 ---
 
 # Aside
@@ -94,7 +93,7 @@ University of Lille
 
 Lille, France
 
-Oct 2014 - Sep 2017
+Oct. 2014 - Sep. 2017
 
 Thesis: *Development and Application of Statistical Methods for Multi-Omics Studies in Type 2 Diabetes: Beyond the Genome-Wide Association Studies Era*
 
@@ -104,7 +103,7 @@ University Claude Bernard Lyon 1
 
 Lyon, France
 
-Sep 2009 - Jul 2011
+Sep. 2009 - Jul. 2011
 
 Internships:
 
@@ -117,7 +116,7 @@ University Claude Bernard Lyon 1
 
 Lyon, France
 
-Sep 2006 - Jul 2009
+Sep. 2006 - Jul. 2009
 
 
 ## Professional & Research Experience {data-icon=laptop}
@@ -131,7 +130,7 @@ EGID - UMR 8199
 
 Lille, France
 
-Jan 2016 - Present
+Jan. 2016 - Present
 
 Activities: *Genome-wide association studies, experimental design, -omics data analysis, methodological developments, team management*
 
@@ -144,7 +143,7 @@ EGID - UMR 8199
 
 Lille, France
 
-Sep 2012 - Dec 2015
+Sep. 2012 - Dec. 2015
 
 Activities: *Genome-wide association studies, experimental design, -omics data analysis, methodological developments*
 
@@ -157,7 +156,7 @@ UMRESTTE - UMR T9405
 
 Bron, France
 
-Nov 2011 - Dec 2011
+Nov. 2011 - Dec. 2011
 
 Activities: *Analysis of a mobility and accident study in secondary-school pupils*
 
@@ -169,7 +168,7 @@ UMR CNRS 5558
 
 Lyon, France
 
-Jan 2011 - Jun 2011
+Jan. 2011 - Jun. 2011
 
 Activities: *Development of a Non-Parametric (on Time) Clustering Algorithm for Longitudinal Data*
 
@@ -181,7 +180,7 @@ UMR CNRS 5558
 
 Lyon, France
 
-Mar 2010 - Jun 2010
+Mar. 2010 - Jun. 2010
 
 Activities: *Mathematical Modelling of Nosocomial Rotavirus Infections in Pediatric Ward*
 
@@ -227,7 +226,7 @@ Mickaël Canouil, Mathilde Boissel and Lijiao Ning
 
 N/A
 
-Apr 2019
+Apr. 2019
 
 [https://github.com/mcanouil/CARoT/](https://github.com/mcanouil/CARoT/)
 
@@ -237,7 +236,7 @@ Mickaël Canouil, Gerard Bouland and Roderick Slieker
 
 N/A
 
-Apr 2019
+Apr. 2019
 
 [https://cran.r-project.org/package=NACHO](https://cran.r-project.org/package=NACHO)
 
@@ -247,7 +246,7 @@ Loïc Yengo, Julien Jacques, Christophe Biernacki and Mickaël Canouil
 
 N/A
 
-Feb 2014
+Feb. 2014
 
 [https://cran.r-project.org/package=clere](https://cran.r-project.org/package=clere)
 
@@ -257,7 +256,7 @@ Mickaël Canouil and Loïc Yengo
 
 N/A
 
-Apr 2013
+Apr. 2013
 
 [https://cran.r-project.org/package=snpEnrichment](https://cran.r-project.org/package=snpEnrichment)
 
@@ -378,7 +377,7 @@ read_bib <- function(path) {
     authors <- paste(paste(authors[-length(authors)], collapse = ", "), authors[length(authors)], sep = " and ")
     data.frame(
       title = clean_field("title", .x),
-      month = paste0(Hmisc::capitalize(clean_field("month", .x)), ""),
+      month = paste0(Hmisc::capitalize(clean_field("month", .x)), "."),
       year = clean_field("year", .x),
       doi = clean_field("doi", .x),
       authors = authors, 
@@ -395,7 +394,7 @@ read_bib <- function(path) {
     levels = paste0(c(
       "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-    ), "")
+    ), ".")
   )
   all_bib[["doi"]] <- ifelse(
     test = grepl("^http", all_bib[["doi"]]), 
@@ -412,13 +411,13 @@ format_bib <- function(bib, author) {
     cat("###", bib[ipub, "title"], "\n\n")
     cat("\n")
     split_authors <- unlist(strsplit(strsplit(bib[["authors"]][ipub], ", ")[[1]], " and "))
-    split_authors <- gsub(author, paste0("<u>", author, if (bib[["first"]][ipub]) "<sup>†<sup>" else "", "</u>"), split_authors)
+    split_authors <- gsub(author, paste0("<u>", author, "</u>", if (bib[["first"]][ipub]) "<sup>†</sup>" else ""), split_authors)
     pos_author <- grep(author, split_authors)
     if (length(split_authors) > 10) {
       if (pos_author <= 10) {
         cat(
           paste(split_authors[1:10], collapse = ", "), 
-          "et al."
+          "*et al.*"
         )
       } else {
         cat(
