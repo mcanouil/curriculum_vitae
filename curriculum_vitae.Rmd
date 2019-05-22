@@ -3,7 +3,7 @@ title: "Mickaël Canouil - Curriculum Vitæ"
 author: Mickaël Canouil
 output:
   pagedown::html_resume:
-    css: ["css/resume.css", "css/curriculum_vitae.css"]
+    css: ["css/curriculum_vitae.css"]
     mathjax: null
 ---
 
