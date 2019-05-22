@@ -1,0 +1,12 @@
+---
+title: '<i class="fa fa-address-card"></i> Contact Info'
+---
+
+- <i class="fa fa-user"></i> Head of the Biostatistic Team
+- <i class="fa fa-university"></i> [EGID - UMR 8199](http://www.good.cnrs.fr/?lang=en)
+- <i class="fa fa-map-marker"></i> Lille, France
+- <i class="fa fa-envelope"></i> [mickael.canouil [at] cnrs.fr](mailto:mickael.canouil@cnrs.fr)
+- <i class="fa fa-phone"></i> +33 (0) 374 00 81 29
+- <i class="fa fa-github"></i> [github.com/mcanouil](https://github.com/mcanouil)
+- <i class="fa fa-twitter"></i> [\@mickaelcanouil](https://twitter.com/mickaelcanouil)
+- <i class="fa fa-linkedin"></i> [linkedin/mickaelcanouil](https://www.linkedin.com/in/mickaelcanouil)

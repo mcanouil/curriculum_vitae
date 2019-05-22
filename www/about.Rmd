@@ -1,0 +1,8 @@
+---
+title: '<i class="fa fa-info"></i> About'
+---
+
+More about this website.
+
+```{r, child = "_session-info.Rmd"}
+```

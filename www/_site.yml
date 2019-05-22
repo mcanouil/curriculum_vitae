@@ -1,0 +1,23 @@
+name: "Mickaël Canouil - Website"
+navbar:
+  title: "TARTARUS"
+  left:
+    - text: "Home"
+      icon: fa-home
+      href: index.html
+    - text: "Publications"
+      icon: fa-newspaper
+      href: publications.html
+  right:
+    - text: "Contact Info"
+      icon: fa-address-card
+      href: contact.html
+    - text: "About"
+      icon: fa-info
+      href: about.html
+output:
+  html_document:
+    theme: simplex
+    include:
+      after_body: footer.html
+
