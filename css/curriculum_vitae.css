@@ -64,6 +64,10 @@ h1, h2, h3 {
   color: #000;
 }
 
+h2 {
+  color: #4169e1;
+}
+
 #main > h1, #aside > h1, #disclaimer > h2 {
   display: none;
 }
@@ -73,7 +77,7 @@ li {
 }
 
 a {
-  color: #000;
+  color: #4169e1;
   text-decoration: none;
 }
 
@@ -120,6 +124,7 @@ h1, h2 {
   font-weight: 300;
   font-size: 1.8rem;
   line-height: 1.5;
+  color: #4169e1;
 }
 
 #title h3 {
@@ -140,7 +145,8 @@ h1, h2 {
   left: calc((var(--date-block-width) + var(--decorator-horizontal-margin)));
   font-weight: 400;
   font-size: 1.1rem;
-  color: #555;
+  /* color: #555; */
+  color: #4169e1;
 }
 
 #main h2 > i {
@@ -355,6 +361,10 @@ h1, h2 {
 }
 
 #contact {
+  color: #000;
+}
+
+#contact a {
   color: #000;
 }
 

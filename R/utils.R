@@ -208,7 +208,7 @@ format_packages_resume <- function(package, author, max) {
         cat("\n")
         cat("::: aside\n")
         cat(
-          "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=brightgreen)]",
+          "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=4169e1)]",
           "(https://github.com/", ipackage[["user"]], "/", ipackage[["name"]], "/)\n",
           sep = ""
         )
@@ -223,7 +223,7 @@ format_packages_resume <- function(package, author, max) {
         cat("\n")
         cat("::: aside\n")
         cat(
-          "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=brightgreen)]",
+          "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=4169e1)]",
           "(https://cran.r-project.org/package=", ipackage[["name"]], ")\n", 
           sep = ""
         )
@@ -245,14 +245,14 @@ format_packages_website <- function(package, author, max) {
       EXPR = ipackage[["where"]],
       "GitHub" = {
         cat(
-          "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=brightgreen)]",
+          "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=4169e1)]",
           "(https://github.com/", ipackage[["user"]], "/", ipackage[["name"]], "/)\n",
           sep = ""
         )
       },
       "CRAN" = {
         cat(
-          "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=brightgreen)]",
+          "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=4169e1)]",
           "(https://cran.r-project.org/package=", ipackage[["name"]], ")\n", 
           sep = ""
         )
