@@ -5,6 +5,9 @@ navbar:
     - text: "Home"
       icon: fa-home
       href: index.html
+    - text: "R Packages"
+      icon: fa-code
+      href: rpackages.html
     - text: "Publications"
       icon: fa-newspaper
       href: publications.html
