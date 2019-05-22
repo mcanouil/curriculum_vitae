@@ -206,6 +206,7 @@ h1, h2 {
   text-align: right;
   line-height: 1;
   max-width: var(--date-block-width);
+  color: #4169e1;
 }
 
 .date span {
@@ -304,6 +305,7 @@ h1, h2 {
 
 .details .location {
   float: right;
+  color: #4169e1;
 }
 
 .details div {
