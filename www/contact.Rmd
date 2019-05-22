@@ -6,7 +6,7 @@ title: '<i class="fa fa-address-card"></i> Contact Info'
 - <i class="fa fa-university" style="color: #4169e1;"></i> [EGID - UMR 8199](http://www.good.cnrs.fr/?lang=en)
 - <i class="fa fa-map-marker" style="color: #4169e1;"></i> Lille, France
 - <i class="fa fa-envelope" style="color: #4169e1;"></i> [mickael.canouil [at] cnrs.fr](mailto:mickael.canouil@cnrs.fr)
-- <i class="fa fa-phone" style="color: #4169e1;"></i> +33 (0) 374 00 81 29
+- <i class="fa fa-phone" style="color: #4169e1;"></i> +33 (0)3 74 00 81 29
 - <i class="fa fa-linkedin" style="color: #4169e1;"></i> [linkedin.com/in/mickaelcanouil](https://www.linkedin.com/in/mickaelcanouil)
 - <i class="fa fa-github" style="color: #4169e1;"></i> [github.com/mcanouil](https://github.com/mcanouil)
 - <i class="fa fa-twitter" style="color: #4169e1;"></i> [twitter.com/mickaelcanouil](https://twitter.com/mickaelcanouil)

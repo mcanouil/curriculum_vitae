@@ -3,6 +3,13 @@
   margin: 1in 0.5in 1in 0.25in;
 }
 
+#picture {
+  border-style: solid;
+  border-width: 2pt;
+  border-color: #4169e1;
+  padding: 5pt;
+}
+
 * {
   box-sizing: border-box;
 }
