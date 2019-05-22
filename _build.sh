@@ -14,3 +14,5 @@ rm *.html
 
 
 Rscript -e 'rmarkdown::render(input = "curriculum_vitae.Rmd", output_file = "index.html", encoding = "UTF-8")'
+
+Rscript -e 'rmarkdown::render_site(input = "www")'
