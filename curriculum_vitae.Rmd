@@ -34,7 +34,7 @@ read_bib <- function(path) {
       )
     }
     authors <- do.call("rbind", strsplit(unlist(strsplit(clean_field("author", .x), " and ")), ", "))
-    authors <- paste(authors[, 2], authors[, 1])
+    authors <- gsub(" ", "&nbsp;", paste(authors[, 2], authors[, 1]))
     authors <- paste(paste(authors[-length(authors)], collapse = ", "), authors[length(authors)], sep = " and ")
     data.frame(
       title = clean_field("title", .x),
@@ -63,10 +63,11 @@ read_bib <- function(path) {
     no = paste0("https://www.doi.org/", all_bib[["doi"]])
   )
   
-  all_bib <- all_bib[order(all_bib[["year"]], all_bib[["month"]], decreasing = TRUE), ]
+  all_bib[order(all_bib[["year"]], all_bib[["month"]], decreasing = TRUE), ]
 }
 
 format_bib <- function(bib, author) {
+  author <- gsub(" ", "&nbsp;", author)
   for (ipub in seq_len(nrow(bib))) {
     cat("\n")
     cat("###", bib[ipub, "title"], "\n\n")
@@ -78,13 +79,13 @@ format_bib <- function(bib, author) {
       if (pos_author <= 10) {
         cat(
           paste(split_authors[1:10], collapse = ", "), 
-          "*et al.*"
+          "*et&nbsp;al.*"
         )
       } else {
         cat(
           paste(c(split_authors[1:9], "*...*, "), collapse = ", "), 
           paste0(grep(pattern = author, x = split_authors, value = TRUE), "<sup>", pos_author, "</sup>"),
-          "*et al.*"
+          "*et&nbsp;al.*"
         )
       }
     } else {
@@ -408,8 +409,8 @@ Project: *Detection of new genomic variants associated with fasting blood glucos
 ### Jointly Modelling SNPs with Survival & Longitudinal Trait
 
 Thematic Day "Statistic & Genomic"  
-of the Réseau Interdisciplinaire  
-autour de la Statistique  
+of the "Réseau Interdisciplinaire  
+autour de la Statistique"  
 (RIS)
 
 Paris, France
@@ -434,8 +435,7 @@ Lille, France
 
 ### "Variants Génétiques Associés à la Trajectoire de la Glycémie à Jeun et à l’Incidence du Diabète de Type 2: Une Approche par Modèle Joint" (CA-075)
 
-Annual Congress  
-of  
+Annual Congress of  
 "Société Francophone du Diabète"  
 (SFD)
 

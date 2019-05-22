@@ -10,7 +10,6 @@ rm *.aux *.bbl *.log *.blg *.out
 
 cd ../
 
-rm -R *_files
 rm *.html
 
 
