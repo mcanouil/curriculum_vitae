@@ -191,7 +191,7 @@ Two-days training (in French)
 
 Bordeaux, France
 
-2018
+May 2018
 
 ::: aside
 [<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/rdatabase)
@@ -206,7 +206,7 @@ DEVeloppement logiciel"
 
 Bordeaux, France
 
-2015
+Jul. 2015
 
 ::: aside
 [<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/julia_tp)
@@ -230,7 +230,7 @@ format_packages(package = source("R/packages.R")$value, author = "Mickaël Canou
 
 Bordeaux, France
 
-2015
+Mar. 2015
 
 Project: *Detection of new genomic variants associated with fasting blood glucose and incidence of type 2 diabetes simultaneously*
 
@@ -250,7 +250,7 @@ autour de la Statistique"
 
 Paris, France
 
-2018
+Oct. 2018
 
 ::: aside
 [<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/joint_model)
@@ -263,7 +263,7 @@ Statistical Methods for Post Genomic Data
 
 Lille, France
 
-2016
+Feb. 2016
 
 
 ## Poster communications {data-icon=file}
@@ -276,7 +276,7 @@ Annual Congress of
 
 Lille, France
 
-2017
+Mar. 2017
 
 ### Single Nucleotide Polymorphisms Associated With Fasting Blood Glucose Trajectory And Type 2 Diabetes Incidence: A Joint Modelling Approach
 
@@ -286,7 +286,7 @@ European Genomic Institute for Diabetes
 
 Lille, France
 
-2016
+Nov. 2016
 
 ### Single Nucleotide Polymorphisms Associated With Fasting Blood Glucose Trajectory And Type 2 Diabetes Incidence: A Joint Modelling Approach
 
@@ -295,7 +295,7 @@ International Genetic Epidemiology Society
 
 Toronto, Canada
 
-2016
+Oct. 2016
 
 ### Application of Joint Models in Genetic Association Studies
 
@@ -304,7 +304,7 @@ International Genetic Epidemiology Society
 
 Baltimore, United-States
 
-2015
+Oct. 2015
 
 
 <!-- ## Publications {data-icon=newspaper} -->
