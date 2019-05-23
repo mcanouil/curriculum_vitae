@@ -1,4 +1,0 @@
-```{r session_info, results = "markup", echo = FALSE, warning = FALSE, message = FALSE}
-options("width" = 110)
-sessioninfo::session_info()
-```

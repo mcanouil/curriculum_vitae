@@ -1,0 +1,29 @@
+name: "Mickaël Canouil - Website"
+output_dir: "."
+navbar:
+  title: "TARTARUS"
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "R Packages"
+      icon: fa-code
+      href: rpackages.html
+    - text: "Publications"
+      icon: fa-newspaper
+      href: publications.html
+  right:
+    - icon: fa-info
+      href: about.html
+    - icon: fa-github
+      href: https://github.com/mcanouil/mcanouil.github.io
+output:
+  html_document:
+    theme: darkly
+    fig_width: 6.3
+    fig_height: 4.7
+    include:
+      after_body: footer.html
+    toc: false
+    toc_float: false
+    number_sections: false
+    self_contained: true

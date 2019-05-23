@@ -1,8 +1,0 @@
----
-title: '<i class="fa fa-code"></i> R Packages'
----
-
-```{r, results = "asis", eval = TRUE, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
-source("../R/utils.R")
-format_packages(package = source("../R/packages.R")$value, author = "Mickaël Canouil", max = Inf, output = "website")
-```

@@ -1,9 +1,0 @@
----
-title: '<i class="fa fa-newspaper"></i> Publications'
----
-
-```{r, results = "asis", eval = TRUE, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
-source("../R/utils.R")
-format_bib(bib = read_bib("../bib/myarticles.bib"), author = "Mickaël Canouil", output = "website")
-```
-

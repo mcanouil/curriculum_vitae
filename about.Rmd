@@ -1,0 +1,7 @@
+---
+title: '<i class="fa fa-info"></i> About Me'
+---
+
+<div class="embed-responsive embed-responsive-4by3 .z-depth-1">
+  <iframe class="embed-responsive-item" src="cv.html" allowfullscreen></iframe>
+</div>
