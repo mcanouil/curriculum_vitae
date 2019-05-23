@@ -9,7 +9,7 @@ output:
 
 # Aside
 
-![Mickaël Canouil](../pictures/0001.jpg){width=226px, id="picture"}
+![Mickaël Canouil](../pictures/0002.jpg){width=226px, id="picture"}
 
 
 <!-- > The best thing about being a statistician is that you get to play in everyone’s backyard." -->
