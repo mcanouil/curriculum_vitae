@@ -12,3 +12,6 @@ cd ../
 Rscript -e 'rmarkdown::render(input = "curriculum_vitae/curriculum_vitae.Rmd", output_dir = ".", output_file = "cv.html", encoding = "UTF-8")'
 
 Rscript -e 'rmarkdown::render_site()'
+
+
+git -c "user.name=Mickaël Canouil" -c "mickael.canouil@cnrs.fr" commit -am "Build update"
