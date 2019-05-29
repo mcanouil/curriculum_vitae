@@ -8,6 +8,7 @@ pdflatex curriculum_vitae
 rm *.aux *.bbl *.log *.blg *.out
 cd ../
 
+rm curriculum_vitae/curriculum_vitae.html
 
 Rscript -e 'rmarkdown::render(input = "curriculum_vitae/curriculum_vitae.Rmd", output_dir = ".", output_file = "cv.html", encoding = "UTF-8")'
 
