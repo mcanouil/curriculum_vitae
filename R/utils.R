@@ -25,7 +25,11 @@ read_article <- function(.x) {
     doi = clean_field("doi", .x),
     authors = authors, 
     journal = clean_field("journal", .x),
-    first = grepl("first", clean_field("annote", .x)),
+    first = if (any(grepl("annote", .x))) {
+      grepl("first", clean_field("annote", .x))
+    } else {
+      FALSE
+    },
     stringsAsFactors = FALSE
   )
 }
