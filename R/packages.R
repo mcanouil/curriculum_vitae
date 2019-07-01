@@ -1,5 +1,14 @@
 rbind(
   data.frame(
+    name = "ggnetwork",
+    title = "Geometries to Plot Networks with 'ggplot2'",
+    authors = "François Briatte, Michał Bojanowski, Mickaël Canouil, Jacob C. Fisher Kipp Johnson and Tyler Rinker",
+    where = "GitHub",
+    user = "briatte",
+    since = "2019-06", 
+    stringsAsFactors = FALSE
+  ),
+  data.frame(
     name = "CARoT",
     title = "Centralised and Automated RepOrting Tools",
     authors = "Mickaël Canouil, Mathilde Boissel and Lijiao Ning",
