@@ -3,7 +3,7 @@ rbind(
     name = "ggnetwork",
     title = "Geometries to Plot Networks with 'ggplot2'",
     authors = "François Briatte, Michał Bojanowski, Mickaël Canouil, Jacob C. Fisher Kipp Johnson and Tyler Rinker",
-    where = "GitHub",
+    where = "CRAN",
     user = "briatte",
     since = "2019-06", 
     stringsAsFactors = FALSE
