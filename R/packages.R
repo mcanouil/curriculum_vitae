@@ -1,13 +1,13 @@
 rbind(
-  data.frame(
-    name = "ggnetwork",
-    title = "Geometries to Plot Networks with 'ggplot2'",
-    authors = "François Briatte, Michał Bojanowski, Mickaël Canouil, Jacob C. Fisher Kipp Johnson and Tyler Rinker",
-    where = "BOTH",
-    user = "briatte",
-    since = "2019-06",
-    stringsAsFactors = FALSE
-  ),
+  # data.frame(
+  #   name = "ggnetwork",
+  #   title = "Geometries to Plot Networks with 'ggplot2'",
+  #   authors = "François Briatte, Michał Bojanowski, Mickaël Canouil, Jacob C. Fisher Kipp Johnson and Tyler Rinker",
+  #   where = "BOTH",
+  #   user = "briatte",
+  #   since = "2019-06",
+  #   stringsAsFactors = FALSE
+  # ),
   data.frame(
     name = "CARoT",
     title = "Centralised and Automated RepOrting Tools",
@@ -23,7 +23,7 @@ rbind(
     authors = "Mickaël Canouil, Gerard Bouland and Roderick Slieker",
     where = "BOTH",
     user = "mcanouil",
-    since = "2019-04", 
+    since = "2018-06", 
     stringsAsFactors = FALSE
   ),
   data.frame(

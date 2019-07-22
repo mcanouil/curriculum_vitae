@@ -73,7 +73,7 @@ format_bib_author <- function(bib, author, max) {
       )
     } else {
       paste(
-        paste(c(split_authors[1:(max - 1)], "*...*, "), collapse = ", "), 
+        paste(c(split_authors[1:(max - 1)], "*[...]*, "), collapse = ", "), 
         paste0(grep(pattern = author, x = split_authors, value = TRUE), "<sup>", pos_author, "</sup>"),
         "*et&nbsp;al.*"
       )
@@ -270,8 +270,7 @@ format_packages_resume <- function(package, author, max) {
 format_packages_website <- function(package, author, max) {
   for (irow in seq_len(nrow(package))) {
     ipackage <- package[irow, ]
-    cat("### ", ipackage[["name"]], ": ", ipackage[["title"]], "\n", sep = "")
-    cat("\n")
+    cat("### ", ipackage[["name"]], ": ", ipackage[["title"]], "\n\n", sep = "")
     switch(
       EXPR = ipackage[["where"]],
       "GitHub" = {
@@ -291,7 +290,7 @@ format_packages_website <- function(package, author, max) {
       "BOTH" = {
         cat(
           "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=4169e1)]",
-          "(https://cran.r-project.org/package=", ipackage[["name"]], ")  \n", 
+          "(https://cran.r-project.org/package=", ipackage[["name"]], ") ", 
           "[![GitHub_tag](https://img.shields.io/github/tag/mcanouil/", ipackage[["name"]], ".svg?label=Github&color=4169e1)]",
           "(https://github.com/", ipackage[["user"]], "/", ipackage[["name"]], "/)\n",
           sep = ""
@@ -327,22 +326,14 @@ format_packages_website <- function(package, author, max) {
       },
       "BOTH" = {
         cat(
+          "Created on ", clean_since,
+          " and available at ",
           "[https://cran.r-project.org/package=", ipackage[["name"]], "]",
-          "(https://cran.r-project.org/package=", ipackage[["name"]], ")\n", 
+          "(https://cran.r-project.org/package=", ipackage[["name"]], ") and ", 
           "[https://github.com/", ipackage[["user"]], "/", ipackage[["name"]], "/]",
           "(https://github.com/", ipackage[["user"]], "/", ipackage[["name"]], "/)\n", 
           sep = ""
         )
-        cat("\n")
-        cat("::: aside\n")
-        cat(
-          "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", ipackage[["name"]], "?color=4169e1)]",
-          "(https://cran.r-project.org/package=", ipackage[["name"]], ")  \n", 
-          "[![GitHub_tag](https://img.shields.io/github/tag/mcanouil/", ipackage[["name"]], ".svg?label=Github&color=4169e1)]",
-          "(https://github.com/", ipackage[["user"]], "/", ipackage[["name"]], "/)\n",
-          sep = ""
-        )
-        cat(":::\n")
       }
     )
     cat("\n")
