@@ -247,6 +247,19 @@ Project: *Detection of new genomic variants associated with fasting blood glucos
 
 ### Jointly Modelling SNPs with Survival & Longitudinal Trait
 
+[A Statistical Seminar Applied on Type 2 Diabetes](https://www.med.lu.se/kalendarium/190121_canouil/)  
+(Host: Pr. Paul Franks)
+
+Lund, Sweden
+
+Jan. 2019
+
+::: aside
+[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/PRESENTATION/tree/0b36aa0c679e07ffb448bb524ca06a20fd5779ae/joint_model)
+:::
+
+### Jointly Modelling SNPs with Survival & Longitudinal Trait
+
 Thematic Day "Statistic & Genomic"  
 of the "Réseau Interdisciplinaire  
 autour de la Statistique"  
@@ -257,7 +270,7 @@ Paris, France
 Oct. 2018
 
 ::: aside
-[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/PRESENTATION/tree/master/joint_model)
+[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/PRESENTATION/tree/dd43462ae2e8a21243296c175ddccc2c1887b3ad/joint_model)
 :::
 
 ### Longitudinal Genetic Modelling: Revisiting Associations of SNPs Associated with Blood Fasting Glucose in Normoglycemic Individuals
