@@ -3,14 +3,6 @@
   margin: 1in 0.5in 1in 0.25in;
 }
 
-#picture {
-  border-style: solid;
-  border-width: 2pt;
-  border-color: #4169e1;
-  border-radius: 50%;
-  padding: 5pt;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -40,7 +32,7 @@
 
   --main-blocks-title-icon-offset-left: calc(-17pt - 0.25 * var(--root-font-size));
 
-  --viewer-background-color: #222222; /* #dcdcdc; */
+  --viewer-background-color: #222222;
   --viewer-pages-spacing: 12px;
   --viewer-shadow-color: #313131;
 }
@@ -70,10 +62,6 @@ body {
 h1, h2, h3 {
   margin: 0;
   color: #000;
-}
-
-h2 {
-  color: #4169e1;
 }
 
 #main > h1, #aside > h1, #disclaimer > h2 {
@@ -153,7 +141,6 @@ h1, h2 {
   left: calc((var(--date-block-width) + var(--decorator-horizontal-margin)));
   font-weight: 400;
   font-size: 1.1rem;
-  /* color: #555; */
   color: #4169e1;
 }
 
@@ -424,10 +411,10 @@ h1, h2 {
   body {
     background-color: var(--viewer-background-color);
     margin: 0; /* for mobile */
-    width: calc(var(--width) + 2 * var(--viewer-pages-spacing)); /* for mobile */
+    width: calc(var(--pagedjs-width) + 2 * var(--viewer-pages-spacing)); /* for mobile */
   }
   .pagedjs_pages {
-    max-width: var(--width);
+    max-width: var(--pagedjs-width);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -443,4 +430,12 @@ h1, h2 {
     margin: auto;
     width: unset;
   }
+}
+
+#picture {
+  border-style: solid;
+  border-width: 2pt;
+  border-color: #4169e1;
+  border-radius: 50%;
+  padding: 5pt;
 }
