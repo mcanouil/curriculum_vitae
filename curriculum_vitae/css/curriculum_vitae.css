@@ -426,13 +426,13 @@ h1, h2 {
     margin: 0; /* for mobile */
     width: calc(var(--width) + 2 * var(--viewer-pages-spacing)); /* for mobile */
   }
-   .pagedjs_pages {
+  .pagedjs_pages {
     max-width: var(--width);
     margin: 0 auto;
     display: flex;
     flex-direction: column;
   }
-   .pagedjs_page {
+  .pagedjs_page {
     box-shadow: 0 0 calc(0.66667 * var(--viewer-pages-spacing)) var(--viewer-shadow-color);
     margin: var(--viewer-pages-spacing) 0;
   }
