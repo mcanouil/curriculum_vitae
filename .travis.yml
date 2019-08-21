@@ -1,0 +1,19 @@
+language: R
+cache: packages
+
+pandoc_version: 2.3.1
+
+script:
+  - Rscript -e 'rmarkdown::render(input = "curriculum_vitae/curriculum_vitae.Rmd", output_dir = ".", output_file = "cv.html", encoding = "UTF-8")'
+  - Rscript -e 'rmarkdown::render_site()'
+
+deploy:
+  provider: script
+  script: 
+    - curl -T cv.html -u $FTP_USER:$FTP_PASSWORD ${FTP_URL}index.html
+  skip_cleanup: true
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
