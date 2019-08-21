@@ -8,12 +8,13 @@ script:
   - Rscript -e 'rmarkdown::render_site()'
 
 deploy:
-  - provider: script
-    script: curl -u $FTP_USER:$FTP_PASSWORD -T cv.html ${FTP_URL}index.html
-    skip_cleanup: true
-  - provider: script
-    script: find -name '*.html' -type f -exec curl -u $FTP_USER:$FTP_PASSWORD -T {} ${FTP_URL}dev/ \;
-    skip_cleanup: true
+  provider: script
+  script: curl -u $FTP_USER:$FTP_PASSWORD -T cv.html ${FTP_URL}index.html
+  skip_cleanup: true
+
+#  - provider: script
+#    script: find -name '*.html' -type f -exec curl -u $FTP_USER:$FTP_PASSWORD -T {} ${FTP_URL}dev/ \;
+#    skip_cleanup: true
 
 notifications:
   email:
