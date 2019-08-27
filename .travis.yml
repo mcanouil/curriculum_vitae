@@ -7,14 +7,10 @@ script:
   - Rscript -e 'rmarkdown::render(input = "curriculum_vitae/curriculum_vitae.Rmd", output_dir = ".", output_file = "cv.html", encoding = "UTF-8")'
   - Rscript -e 'rmarkdown::render_site()'
 
-# after_success:
-#   - curl -u $FTP_USER:$FTP_PASSWORD -T cv.html $FTP_INDEX
-#   - find -name '*.html' -type f -exec curl -u $FTP_USER:$FTP_PASSWORD -T {} $FTP_DEV \;
-
-# deploy:
-#   provider: script
-#   script: bash _deploy.sh $FTP_USER $FTP_PASSWORD $FTP_INDEX $FTP_DEV
-#   skip_cleanup: true
+deploy:
+  provider: script
+  script: bash _deploy.sh $FTP_USER $FTP_PASSWORD $FTP_URL
+  skip_cleanup: true
 
 notifications:
   email:
