@@ -8,12 +8,8 @@ script:
   - Rscript -e 'rmarkdown::render_site()'
 
 after_success:
-  - curl -u $FTP_USER:$FTP_PASSWORD -T cv.html $FTP_INDEX ;
-
-deploy:
-  provider: script
-  script: bash _deploy.sh $FTP_USER $FTP_PASSWORD $FTP_INDEX $FTP_DEV
-  skip_cleanup: true
+  - curl -u $FTP_USER:$FTP_PASSWORD -T cv.html $FTP_INDEX
+  - find -name '*.html' -type f -exec curl -u $FTP_USER:$FTP_PASSWORD -T {} $FTP_DEV \;
 
 notifications:
   email:
