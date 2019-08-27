@@ -9,7 +9,9 @@ script:
 
 deploy:
   provider: script
-  script: curl -u $FTP_USER:$FTP_PASSWORD -T cv.html ${FTP_URL}index.html
+  script: 
+    - Rscript -e 'rmarkdown::render(input = "curriculum_vitae/curriculum_vitae.Rmd", output_dir = ".", output_file = "cv.html", encoding = "UTF-8")'
+    - curl -u $FTP_USER:$FTP_PASSWORD -T cv.html ${FTP_URL}index.html
   skip_cleanup: true
 
 #  - provider: script
