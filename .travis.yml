@@ -11,7 +11,7 @@ before_deploy:
 
 deploy:
   provider: script
-  script: bash _deploy.sh $FTP_USER $FTP_PASSWORD $FTP_URL
+  script: bash _deploy.sh $FTP_USER $FTP_PASSWORD $FTP_INDEX $FTP_DEV
   skip_cleanup: true
 
 notifications:
