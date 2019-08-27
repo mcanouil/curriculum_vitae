@@ -4,6 +4,6 @@ Rscript -e 'rmarkdown::render(input = "curriculum_vitae/curriculum_vitae.Rmd", o
 
 curl -u $1:$2 -T cv.html $3 ;
 
-Rscript -e 'rmarkdown::render_site()' ;
-
-find -name '*.html' -type f -exec curl -u $1:$2 -T {} $4 \;
+# Rscript -e 'rmarkdown::render_site()' ;
+# 
+# find -name '*.html' -type f -exec curl -u $1:$2 -T {} $4 \;
