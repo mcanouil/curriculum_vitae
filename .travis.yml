@@ -6,12 +6,4 @@ pandoc_version: 2.3.1
 # script: Rscript -e 'rmarkdown::render_site()'
 script: Rscript -e 'rmarkdown::render("curriculum_vitae.Rmd", encoding = "UTF-8")'
 
-deploy:
-  provider: script
-  script: curl --user $FTP_USER:$FTP_PASSWORD -T curriculum_vitae.html ftp://${FTP_URL}/www/index.html
-  skip_cleanup: true
-
-notifications:
-  email:
-    on_success: change
-    on_failure: change
+after_success: curl --user ${FTP_USER}:${FTP_PASSWORD} -T curriculum_vitae.html ftp://${FTP_URL}/www/index.html
