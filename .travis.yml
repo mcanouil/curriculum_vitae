@@ -14,5 +14,5 @@ before_deploy: Rscript -e 'remotes::install_cran("pkgdown")'
 
 deploy:
   provider: script
-  script: Rscript -e 'source("R/deploy.R"); deploy_site("curriculum_vitae")'
+  script: Rscript -e 'source("R/deploy.R"); deploy_site(commit_message = "curriculum_vitae")'
   skip_cleanup: true
