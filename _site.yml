@@ -1,5 +1,4 @@
 name: "Mickaël Canouil - Website"
-output_dir: "docs"
 navbar:
   title: "TARTARUS"
   left:
