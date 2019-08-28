@@ -20,7 +20,7 @@ deploy_site <- function(
   ssh_id_file <- "~/.ssh/id_rsa"
   cli::rule("Setting up SSH id", line = 1)
   cli::cat_line("Copying private key to: ", ssh_id_file)
-  cli::write_lines(rawToChar(openssl::base64_decode(ssh_id)), ssh_id_file)
+  pkgdown:::write_lines(rawToChar(openssl::base64_decode(ssh_id)), ssh_id_file)
   cli::cat_line("Setting private key permissions to 0600")
   fs::file_chmod(ssh_id_file, "0600")
 
@@ -31,11 +31,11 @@ deploy_site <- function(
   #   gh <- rematch2::re_match(pkg$github_url, github_url_rx())
   #   repo_slug <- paste0(gh$owner, "/", gh$repo)
   # }
-  pkgdown::github_clone(dest_dir, repo_slug)
+  pkgdown:::github_clone(dest_dir, repo_slug)
   rmarkdown::render_site()
   rmarkdown::render(input = "curriculum_vitae.Rmd", output_format = "pagedown::html_resume")
   unlink(c("_site/README.html", "_site/DESCRIPTION"))
   file.copy(from = list.files("_site", full.names = TRUE), to = dest_dir, overwrite = TRUE, recursive = TRUE)
-  pkgdown::github_push(dest_dir, commit_message)
+  pkgdown:::github_push(dest_dir, commit_message)
   cli::rule("Deploy completed", line = 2)
 }
