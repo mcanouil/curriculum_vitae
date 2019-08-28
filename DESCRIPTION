@@ -4,4 +4,5 @@ Version: 0.0.1
 Imports: 
     Hmisc,
     rmarkdown,
-    pagedown
+    pagedown,
+    pkgdown
