@@ -1,4 +1,4 @@
-deploy_site_github <- function(
+deploy_site <- function(
   pkg = ".",
   ssh_id = Sys.getenv("id_rsa", ""),
   repo_slug = Sys.getenv("TRAVIS_REPO_SLUG", ""),
