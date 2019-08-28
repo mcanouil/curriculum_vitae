@@ -9,7 +9,7 @@ output:
 
 # Aside
 
-![Mickaël Canouil](../pictures/id_portrait_square.png){width=226px, id="picture"}
+![Mickaël Canouil](pictures/id_portrait_square.png){width=226px, id="picture"}
 
 
 <!-- > The best thing about being a statistician is that you get to play in everyone’s backyard." -->
@@ -219,8 +219,8 @@ Jul. 2015
 ## R Packages {data-icon=code}
 
 ```{r rpackages, results = "asis", eval = TRUE, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
-source("../R/utils.R")
-format_packages(package = source("../R/packages.R")$value, author = "Mickaël Canouil", max = 57, output = "resume")
+source("R/utils.R")
+format_packages(package = source("R/packages.R")$value, author = "Mickaël Canouil", max = 57, output = "resume")
 ```
 
 
@@ -343,8 +343,8 @@ Oct. 2015
 <!-- ## Publications {data-icon=newspaper} -->
 
 ```{r, results = "asis", eval = TRUE, echo = FALSE, message = FALSE, error = FALSE, warning = FALSE}
-source("../R/utils.R")
-articles <- read_bib("../bib/myarticles.bib")
+source("R/utils.R")
+articles <- read_bib("bib/myarticles.bib")
 cat("\n")
 cat("## Publications (", format(nrow(articles), big.mark = ","), "){data-icon=newspaper}\n\n", sep = "")
 cat("\n")
