@@ -1,6 +1,5 @@
 name: "Mickaël Canouil - Website"
 output_dir: "_site"
-new_session: true
 exclude: ["README.md", "R", "bib", "pictures", "css"]
 navbar:
   title: "TARTARUS"
