@@ -1,4 +1,6 @@
 name: "Mickaël Canouil - Website"
+new_session: true
+exclude: ["README.md", "R", "bib", "pictures"]
 navbar:
   title: "TARTARUS"
   left:
