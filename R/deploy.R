@@ -17,8 +17,6 @@ deploy_site <- function(
     )
   }
   cli::rule("Deploying site", line = 2)
-  cli::rule("Installing package", line = 1)
-  callr::rcmd("INSTALL", tarball, show = verbose, fail_on_status = TRUE)
   ssh_id_file <- "~/.ssh/id_rsa"
   cli::rule("Setting up SSH id", line = 1)
   cli::cat_line("Copying private key to: ", ssh_id_file)
