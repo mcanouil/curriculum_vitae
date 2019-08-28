@@ -6,11 +6,6 @@ deploy_site_github <- function(
   verbose = FALSE,
   ...
 ) {
-  if (!nzchar(tarball)) {
-    stop("No built tarball detected, please provide the location of one with `tarball`",
-      call. = FALSE
-    )
-  }
   if (!nzchar(ssh_id)) {
     stop("No deploy key found, please setup with `travis::use_travis_deploy()`",
       call. = FALSE
