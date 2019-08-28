@@ -1,6 +1,6 @@
 name: "Mickaël Canouil - Website"
 output_dir: "_site"
-exclude: ["README.md", "R", "bib", "pictures", "css"]
+exclude: ["README.md", "R", "bib"]
 navbar:
   title: "TARTARUS"
   left:
