@@ -33,7 +33,7 @@ deploy_site <- function(
   # }
   pkgdown:::github_clone(dest_dir, repo_slug)
   rmarkdown::render_site()
-  rmarkdown::render(input = "curriculum_vitae.Rmd", output_format = "pagedown::html_resume")
+  rmarkdown::render(input = "curriculum_vitae.Rmd", output_dir = "_site", output_format = "pagedown::html_resume")
   unlink(c("_site/README.html", "_site/DESCRIPTION", "_site/css", "_site/pictures"), recursive = TRUE)
   file.copy(from = list.files("_site", full.names = TRUE), to = dest_dir, overwrite = TRUE, recursive = TRUE)
   commit_message <- sprintf("Built site for %s: %s@%s", commit_message, Sys.Date(), substr(Sys.getenv("TRAVIS_COMMIT"), 1, 7))
