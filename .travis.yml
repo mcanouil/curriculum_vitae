@@ -6,7 +6,7 @@ pandoc_version: 2.3.1
 # script: Rscript -e 'rmarkdown::render_site()'
 script: 
   - Rscript -e 'rmarkdown::render_site()'
-  - Rscript -e 'rmarkdown::render_site(input = "curriculum_vitae.Rmd", output_format = "pagedown::html_resume")'
+  - Rscript -e 'rmarkdown::render(input = "curriculum_vitae.Rmd", output_format = "pagedown::html_resume")'
 
 after_success: curl --connect-timeout 10 --user ${FTP_USER}:${FTP_PASSWORD} -T _site/curriculum_vitae.html ftp://${FTP_URL}/www/index.html
 

@@ -35,7 +35,7 @@ deploy_site <- function(
   # }
   pkgdown::github_clone(dest_dir, repo_slug)
   rmarkdown::render_site()
-  rmarkdown::render_site(input = "curriculum_vitae.Rmd", output_format = "pagedown::html_resume")
+  rmarkdown::render(input = "curriculum_vitae.Rmd", output_format = "pagedown::html_resume")
   unlink(c("_site/README.html", "_site/DESCRIPTION"))
   file.copy(from = list.files("_site", full.names = TRUE), to = dest_dir, overwrite = TRUE, recursive = TRUE)
   pkgdown::github_push(dest_dir, commit_message)
