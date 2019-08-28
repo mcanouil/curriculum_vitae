@@ -4,6 +4,6 @@ cache: packages
 pandoc_version: 2.3.1
 
 # script: Rscript -e 'rmarkdown::render_site()'
-script: Rscript -e 'rmarkdown::render("curriculum_vitae.Rmd", encoding = "UTF-8")'
+script: Rscript -e 'rmarkdown::render("curriculum_vitae.Rmd", encoding = "UTF-8", output_format = "pagedown::html_resume")'
 
 after_success: curl --user ${FTP_USER}:${FTP_PASSWORD} -T curriculum_vitae.html ftp://${FTP_URL}/www/index.html
