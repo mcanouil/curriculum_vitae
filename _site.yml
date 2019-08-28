@@ -1,5 +1,5 @@
 name: "Mickaël Canouil - Website"
-output_dir: "."
+output_dir: "docs"
 navbar:
   title: "TARTARUS"
   left:
@@ -22,7 +22,7 @@ output:
     fig_width: 6.3
     fig_height: 4.7
     include:
-      after_body: footer.html
+      after_body: .footer.html
     toc: false
     toc_float: false
     number_sections: false
