@@ -8,7 +8,7 @@ script:
   - Rscript -e 'rmarkdown::render_site()'
   - Rscript -e 'rmarkdown::render(input = "curriculum_vitae.Rmd", output_format = "pagedown::html_resume")'
 
-after_success: curl --max-time 30 --retry 3 --user ${FTP_USER}:${FTP_PASSWORD} -T _site/curriculum_vitae.html ftp://${FTP_URL}/www/index.html
+after_success: curl --max-time 10 --retry 4 --user ${FTP_USER}:${FTP_PASSWORD} -T _site/curriculum_vitae.html ftp://${FTP_URL}/www/index.html
 
 before_deploy: Rscript -e 'remotes::install_cran("pkgdown")'
 
