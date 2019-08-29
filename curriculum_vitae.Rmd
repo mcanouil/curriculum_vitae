@@ -6,7 +6,7 @@ output:
     css: ["css/curriculum_vitae.css"]
     mathjax: null
     includes:
-      in_header: .ga_script.html
+      in_header: _ga_script.html
 ---
 
 # Aside
