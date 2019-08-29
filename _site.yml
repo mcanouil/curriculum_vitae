@@ -24,6 +24,7 @@ output:
     fig_width: 6.3
     fig_height: 4.7
     include:
+      in_header: .ga_script.html
       after_body: .footer.html
     toc: false
     toc_float: false
