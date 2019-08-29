@@ -32,7 +32,7 @@ output:
 
 ## Computer Skills {#skills}
 
-- <u style="color: #4169e1;">*Advanced:*</u> R (Shiny, Rmarkdown, S4, etc.), HTML, css, LATEX, markdown
+- <u style="color: #4169e1;">*Advanced:*</u> R (Shiny, Rmarkdown, S3, S4, etc.), HTML, css, LATEX, markdown
 - <u style="color: #4169e1;">*Intermediate:*</u> Docker, bash, Julia, Perl, Python, SAS
 - <u style="color: #4169e1;">*Basic:*</u> C/C++, SQL, NoSQL, Lua
 
