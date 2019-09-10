@@ -84,6 +84,39 @@ as the *head of the biostatistic team*.
 <!-- (associated by diagnosis definition) using SNPs as biomarkers of interest. -->
 
 
+## Education {data-icon=graduation-cap data-concise=true}
+
+### Doctor of Philosophy (Ph.D.) in BioStatistics
+
+University of Lille
+
+Lille, France
+
+Oct. 2014 - Sep. 2017
+
+Thesis: *Development and Application of Statistical Methods for Multi-Omics Studies in Type 2 Diabetes: Beyond the Genome-Wide Association Studies Era*
+
+### Master's Degree in Biostatistics, Bioinformatics and Genomics (*Specialised in Biostatistics*)
+
+University Claude Bernard Lyon 1
+
+Lyon, France
+
+Sep. 2009 - Jul. 2011
+
+Internships:
+
+- *Mathematical Modelling of Nosocomial Rotavirus Infections in Pediatric Ward*
+- *Development of a Non-Parametric (on Time) Clustering Algorithm for Longitudinal Data*
+
+### Bachelor's Degree in Biology (*Specialised in Biostatistics*)
+
+University Claude Bernard Lyon 1
+
+Lyon, France
+
+Sep. 2006 - Jul. 2009
+
 
 ## Professional & Research Experience {data-icon=laptop}
 
@@ -149,40 +182,6 @@ Lyon, France
 Mar. 2010 - Jun. 2010
 
 Activities: *Mathematical Modelling of Nosocomial Rotavirus Infections in Pediatric Ward*
-
-
-## Education {data-icon=graduation-cap data-concise=true}
-
-### Doctor of Philosophy (Ph.D.) in BioStatistics
-
-University of Lille
-
-Lille, France
-
-Oct. 2014 - Sep. 2017
-
-Thesis: *Development and Application of Statistical Methods for Multi-Omics Studies in Type 2 Diabetes: Beyond the Genome-Wide Association Studies Era*
-
-### Master's Degree in Biostatistics, Bioinformatics and Genomics (*Specialised in Biostatistics*)
-
-University Claude Bernard Lyon 1
-
-Lyon, France
-
-Sep. 2009 - Jul. 2011
-
-Internships:
-
-- *Mathematical Modelling of Nosocomial Rotavirus Infections in Pediatric Ward*
-- *Development of a Non-Parametric (on Time) Clustering Algorithm for Longitudinal Data*
-
-### Bachelor's Degree in Biology (*Specialised in Biostatistics*)
-
-University Claude Bernard Lyon 1
-
-Lyon, France
-
-Sep. 2006 - Jul. 2009
 
 
 ## Teaching Experience {data-icon=chalkboard-teacher}
