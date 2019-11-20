@@ -186,6 +186,21 @@ Activities: *Mathematical Modelling of Nosocomial Rotavirus Infections in Pediat
 
 ## Teaching Experience {data-icon=chalkboard-teacher}
 
+### Shiny: First Steps
+
+One-day training (in French)  
+"Réseau Interdisciplinaire 
+autour de la Statistique"  
+(RIS)
+
+Lille, France
+
+November 2019
+
+::: aside
+[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/rshiny/tree/a29de35cdb277c00eb40bccd698a26c1b9c9f143)
+:::
+
 ### R and Databases
 
 Two-days training (in French)  
