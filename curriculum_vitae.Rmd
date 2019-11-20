@@ -195,7 +195,7 @@ autour de la Statistique"
 
 Lille, France
 
-November 2019
+Nov. 2019
 
 ::: aside
 [<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/rshiny/tree/a29de35cdb277c00eb40bccd698a26c1b9c9f143)
