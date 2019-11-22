@@ -198,7 +198,7 @@ Lille, France
 Nov. 2019
 
 ::: aside
-[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/rshiny/tree/a29de35cdb277c00eb40bccd698a26c1b9c9f143)
+[<i class="fa fa-github"></i> GitHub](https://github.com/mcanouil/rshiny/commit/edeca553c3c0905ae0d421cfa9099ad8435cc45e)
 :::
 
 ### R and Databases
