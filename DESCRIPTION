@@ -4,4 +4,11 @@ Version: 0.0.1
 Imports: 
     Hmisc,
     rmarkdown,
-    pagedown
+    pagedown,
+    glue,
+    tibble,
+    dplyr,
+    tidyr,
+    magrittr,
+    purrr,
+    readxl

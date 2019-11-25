@@ -351,3 +351,206 @@ format_packages <- function(package, author, max, output = NULL) {
 
   invisible()
 }
+
+`%>%` <- magrittr::`%>%`
+
+item_order <- function(data) {
+  data[]
+}
+
+add_github_logo <- function(url) {
+  gsub(
+    pattern = "(.*)https://github.com/(.*)", 
+    replacement = '\\1[<i class="fa fa-github"></i> GitHub](https://github.com/\\2)', 
+    x = url
+  )
+}
+
+profil_section <- function(xlsx = "data/cv.xlsx", sheet = "profil") {
+  readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::filter(show == 1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    dplyr::mutate(
+      level = purrr::map_chr(
+        .x = level, 
+        .f = ~ paste(rep("#", each = as.numeric(.x) + 2), collapse = "")
+      )
+    ) %>% 
+    glue::glue_data('{level} {title}\n\n{paragraph}\n\n')
+}
+
+contact_section <- function(xlsx = "data/cv.xlsx", sheet = "contact") {
+  readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(
+      '## Contact Info {{#contact}}',
+      '\n\n',
+      '- <i class="fa fa-user" style="color: #4169e1;"></i> {position}',
+      '\n',
+      '- <i class="fa fa-university" style="color: #4169e1;"></i> {institute}',
+      '\n',
+      '- <i class="fa fa-map-marker" style="color: #4169e1;"></i> {city}',
+      '\n',
+      '- <i class="fa fa-envelope" style="color: #4169e1;"></i> [{gsub("@", " [at] ", email)}](mailto:{email})',
+      '\n',
+      '- <i class="fa fa-phone" style="color: #4169e1;"></i> {phone}',
+      '\n',
+      '- <i class="fa fa-linkedin" style="color: #4169e1;"></i> [linkedin.com/in/{linkedin}](https://www.linkedin.com/in/{linkedin})',
+      '\n',
+      '- <i class="fa fa-github" style="color: #4169e1;"></i> [github.com/{github}](https://github.com/{github})',
+      '\n',
+      '- <i class="fa fa-twitter" style="color: #4169e1;"></i> [twitter.com/{twitter}](https://twitter.com/{twitter})',
+      '\n\n'
+    )
+}
+
+skills_section <- function(xlsx = "data/cv.xlsx", sheet = "skills") {
+  readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    dplyr::group_by(level) %>% 
+    dplyr::summarise(what = as.character(glue::glue_collapse(what, sep = ", ", last = " and "))) %>% 
+    tidyr::pivot_wider(names_from = level, values_from = what) %>% 
+    glue::glue_data(
+      '## Computer Skills {{#skills}}',
+      "\n\n",
+      '- <u style="color: #4169e1;">*Advanced:*</u> {advanced}',
+      '\n',
+      '- <u style="color: #4169e1;">*Intermediate:*</u> {intermediate}',
+      '\n',
+      '- <u style="color: #4169e1;">*Basic:*</u> {basic}',
+      '\n\n'
+    )
+}
+
+disclaimer_section <- function(text = NULL) {
+  glue::glue(
+    '## Disclaimer {{#disclaimer}}',
+    if (is.null(text)) '\n\n' else '\n\n{text}\n\n',
+    'Last updated on {Sys.Date()}.\n\n'
+  )
+}
+
+sidebar <- function(
+  png = "pictures/cv.png", 
+  contact = contact_section(), 
+  skills = skills_section(), 
+  disclaimer = disclaimer_section()
+) {
+  cat(
+    '# Aside\n',
+    '```{{r, out.extra = \'style="width=226px;" id="picture"\'}}',
+    'knitr::include_graphics({png})',
+     '```',
+    contact,
+    skills, 
+    disclaimer,
+    sep = "\n\n"
+  )
+}
+
+
+education_section <- function(xlsx = "data/cv.xlsx", sheet = "education") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n',
+      '### {degree}',
+      '{university}',
+      '{city}',
+      '{start} - {end}',
+      '{description}',
+      '\n\n'
+    )
+  
+  c("## Education {data-icon=graduation-cap data-concise=true}", text)
+}
+
+experience_section <- function(xlsx = "data/cv.xlsx", sheet = "experience") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n',
+      '### {position}',
+      '{institute}',
+      '{city}',
+      '{start} - {end}',
+      'Activities: *{activities}*',
+      '\n\n'
+    )
+  
+  c("## Professional & Research Experience {data-icon=laptop}", text)
+}
+
+teaching_section <- function(xlsx = "data/cv.xlsx", sheet = "teaching") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {title}',
+      '{type}  \n{institute}',
+      '{city}',
+      '{date}',
+      '::: aside\n{add_github_logo(url)}\n:::',
+      '\n\n'
+    )
+  
+  c(glue::glue("## Teaching Experience ({length(text)}) {{data-icon=chalkboard-teacher}}"), text)
+}
+
+packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author = NULL) {
+  readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    format_packages(author = author, max = 57, output = "resume")
+  
+  # c("## R Packages {data-icon=code}", text)
+}
+
+awards_section <- function(xlsx = "data/cv.xlsx", sheet = "awards") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {name}',
+      '{institute}',
+      '{city}',
+      '{date}',
+      '{description}',
+      '::: aside\n{add_github_logo(url)}\n:::',
+      '\n\n'
+    )
+  
+  c(glue::glue("## Awards ({length(text)}) {{data-icon=trophy}}"), text)
+}
+
+oral_section <- function(xlsx = "data/cv.xlsx", sheet = "oral") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {title}',
+      '{organiser}',
+      '{city}',
+      '{date}',
+      '::: aside\n{add_github_logo(url)}\n:::',
+      '\n\n'
+    )
+  
+  c(glue::glue("## Oral communications ({length(text)}) {{data-icon=comment-dots}}"), text)
+}
+
+poster_section <- function(xlsx = "data/cv.xlsx", sheet = "poster") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {title}',
+      '{organiser}',
+      '{city}',
+      '{date}',
+      '::: aside\n{add_github_logo(url)}\n:::',
+      '\n\n'
+    )
+
+  c(glue::glue('## Poster communications ({length(text)}) {{data-icon=file}}'), text)
+}
