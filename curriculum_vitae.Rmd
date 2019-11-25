@@ -1,6 +1,8 @@
 ---
-title: "Mickaël Canouil - Curriculum Vitæ"
-author: Mickaël Canouil
+params:
+  author: "Mickaël Canouil"
+title: '`r paste(params[["author"]], "Curriculum Vitæ", sep = " - ")`'
+author: '`r params[["author"]]`'
 output:
   pagedown::html_resume:
     css: ["css/curriculum_vitae.css"]
@@ -13,8 +15,6 @@ editor_options:
 
 ```{r setup, include = FALSE}
 options(stringsAsFactors = FALSE)
-source("R/utils.R")
-
 knitr::opts_chunk$set(
   results = "asis", 
   eval = TRUE, 
@@ -23,6 +23,7 @@ knitr::opts_chunk$set(
   error = FALSE, 
   warning = FALSE
 )
+source("R/utils.R")
 ```
 
 
@@ -43,7 +44,7 @@ cat(
 
 # Main
 
-## Mickaël Canouil {#title}
+## `r params[["author"]]` {#title}
 
 ```{r}
 cat(
@@ -58,7 +59,7 @@ cat(
 ## R Packages {data-icon=code}
 
 ```{r}
-packages_section(author = "Mickaël Canouil")
+packages_section(author = params[["author"]])
 ```
 
 ```{r}
@@ -78,6 +79,6 @@ articles <- read_bib("data/cv.bib")
 cat("\n")
 cat("## Publications (", format(nrow(articles), big.mark = ","), "){data-icon=newspaper}\n\n", sep = "")
 cat("\n")
-format_bib(bib = articles, author = "Mickaël Canouil", max = 10, output = "resume")
+format_bib(bib = articles, author = params[["author"]], max = 10, output = "resume")
 ```
 
