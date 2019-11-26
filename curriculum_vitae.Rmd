@@ -1,6 +1,9 @@
 ---
 params:
   author: "Mickaël Canouil"
+  xlsx: "data/cv.xlsx"
+  bib: "data/cv.bib"
+  picture: "data/cv.png"
 title: '`r paste(params[["author"]], "Curriculum Vitæ", sep = " - ")`'
 author: '`r params[["author"]]`'
 output:
@@ -23,62 +26,30 @@ knitr::opts_chunk$set(
   error = FALSE, 
   warning = FALSE
 )
-source("R/utils.R")
+source("R/cv.R")
 ```
-
 
 # Aside
 
 ```{r, out.extra = 'style="width=226px;" id="picture"'}
-knitr::include_graphics("data/cv.png")
+knitr::include_graphics(params[["picture"]])
 ```
 
 ```{r}
 cat(
-  contact_section(),
-  skills_section(),
-  disclaimer_section(),
+  contact_section(xlsx = params[["xlsx"]], sheet = "contact"),
+  skills_section(xlsx = params[["xlsx"]], sheet = "skills"),
+  disclaimer_section(text = NULL),
+  title_section(author = params[["author"]]),
+  profil_section(xlsx = params[["xlsx"]], sheet = "profil"),
+  education_section(xlsx = params[["xlsx"]], sheet = "education"),
+  experience_section(xlsx = params[["xlsx"]], sheet = "experience"),
+  teaching_section(xlsx = params[["xlsx"]], sheet = "teaching"),
+  packages_section(xlsx = params[["xlsx"]], sheet = "packages", author = params[["author"]]),
+  awards_section(xlsx = params[["xlsx"]], sheet = "awards"),
+  oral_section(xlsx = params[["xlsx"]], sheet = "oral"),
+  poster_section(xlsx = params[["xlsx"]], sheet = "poster"),
+  articles_section(bib = params[["bib"]], author = params[["author"]]),
   sep = "\n"
 )
 ```
-
-# Main
-
-## `r params[["author"]]` {#title}
-
-```{r}
-cat(
-  profil_section(),
-  education_section(),
-  experience_section(),
-  teaching_section(),
-  sep = "\n"
-)
-```
-
-## R Packages {data-icon=code}
-
-```{r}
-packages_section(author = params[["author"]])
-```
-
-```{r}
-cat(
-  awards_section(),
-  oral_section(),
-  poster_section(),
-  sep = "\n"
-)
-```
-
-
-<!-- ## Publications {data-icon=newspaper} -->
-
-```{r}
-articles <- read_bib("data/cv.bib")
-cat("\n")
-cat("## Publications (", format(nrow(articles), big.mark = ","), "){data-icon=newspaper}\n\n", sep = "")
-cat("\n")
-format_bib(bib = articles, author = params[["author"]], max = 10, output = "resume")
-```
-

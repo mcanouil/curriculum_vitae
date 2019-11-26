@@ -1,0 +1,415 @@
+`%>%` <- magrittr::`%>%`
+
+add_github_logo <- function(url) {
+  gsub(
+    pattern = "(.*)https://github.com/(.*)", 
+    replacement = '\\1[<i class="fa fa-github"></i> GitHub](https://github.com/\\2)', 
+    x = url
+  )
+}
+
+profil_section <- function(xlsx = "data/cv.xlsx", sheet = "profil") {
+  readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::filter(show == 1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    dplyr::mutate(
+      level = purrr::map_chr(
+        .x = level, 
+        .f = ~ paste(rep("#", each = as.numeric(.x) + 2), collapse = "")
+      )
+    ) %>% 
+    glue::glue_data('{level} {title}\n\n{paragraph}\n\n')
+}
+
+contact_section <- function(xlsx = "data/cv.xlsx", sheet = "contact") {
+  readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(
+      '## Contact Info {{#contact}}',
+      '\n\n',
+      '- <i class="fa fa-repo_user" style="color: #4169e1;"></i> {position}',
+      '\n',
+      '- <i class="fa fa-university" style="color: #4169e1;"></i> {institute}',
+      '\n',
+      '- <i class="fa fa-map-marker" style="color: #4169e1;"></i> {city}',
+      '\n',
+      '- <i class="fa fa-envelope" style="color: #4169e1;"></i> [{gsub("@", " [at] ", email)}](mailto:{email})',
+      '\n',
+      '- <i class="fa fa-phone" style="color: #4169e1;"></i> {phone}',
+      '\n',
+      '- <i class="fa fa-linkedin" style="color: #4169e1;"></i> [linkedin.com/in/{linkedin}](https://www.linkedin.com/in/{linkedin})',
+      '\n',
+      '- <i class="fa fa-github" style="color: #4169e1;"></i> [github.com/{github}](https://github.com/{github})',
+      '\n',
+      '- <i class="fa fa-twitter" style="color: #4169e1;"></i> [twitter.com/{twitter}](https://twitter.com/{twitter})',
+      '\n\n'
+    )
+}
+
+skills_section <- function(xlsx = "data/cv.xlsx", sheet = "skills") {
+  readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    dplyr::group_by(level) %>% 
+    dplyr::summarise(what = as.character(glue::glue_collapse(what, sep = ", ", last = " and "))) %>% 
+    tidyr::pivot_wider(names_from = level, values_from = what) %>% 
+    glue::glue_data(
+      '## Computer Skills {{#skills}}',
+      "\n\n",
+      '- <u style="color: #4169e1;">*Advanced:*</u> {advanced}',
+      '\n',
+      '- <u style="color: #4169e1;">*Intermediate:*</u> {intermediate}',
+      '\n',
+      '- <u style="color: #4169e1;">*Basic:*</u> {basic}',
+      '\n\n'
+    )
+}
+
+disclaimer_section <- function(text = NULL) {
+  glue::glue(
+    '## Disclaimer {{#disclaimer}}',
+    if (is.null(text)) '\n\n' else '\n\n{text}\n\n',
+    'Last updated on {Sys.Date()}.\n\n'
+  )
+}
+
+sidebar <- function(
+  png = "pictures/cv.png", 
+  contact = contact_section(), 
+  skills = skills_section(), 
+  disclaimer = disclaimer_section()
+) {
+  cat(
+    '# Aside\n',
+    '```{{r, out.extra = \'style="width=226px;" id="picture"\'}}',
+    'knitr::include_graphics({png})',
+     '```',
+    contact,
+    skills, 
+    disclaimer,
+    sep = "\n\n"
+  )
+}
+
+
+title_section <- function(author = NULL) {
+  c(
+    "# Main",
+    glue::glue('## {params[["author"]]} {{#title}}')
+  )
+}
+
+education_section <- function(xlsx = "data/cv.xlsx", sheet = "education") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n',
+      '### {degree}',
+      '{university}',
+      '{city}',
+      '{start} - {end}',
+      '{description}',
+      '\n\n'
+    )
+  
+  c("## Education {data-icon=graduation-cap data-concise=true}", text)
+}
+
+experience_section <- function(xlsx = "data/cv.xlsx", sheet = "experience") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n',
+      '### {position}',
+      '{institute}',
+      '{city}',
+      '{start} - {end}',
+      'Activities: *{activities}*',
+      '\n\n'
+    )
+  
+  c("## Professional & Research Experience {data-icon=laptop}", text)
+}
+
+teaching_section <- function(xlsx = "data/cv.xlsx", sheet = "teaching") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {title}',
+      '{type}  \n{institute}',
+      '{city}',
+      '{date}',
+      '::: aside\n{add_github_logo(url)}\n:::',
+      '\n\n'
+    )
+  
+  c(glue::glue("## Teaching Experience ({length(text)}) {{data-icon=chalkboard-teacher}}"), text)
+}
+
+
+
+packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author = NULL) {
+  format_package_author <- function(authors, author, max = 57) {
+    purrr::map(authors, function(iauthors) {
+      split_authors <- unlist(strsplit(strsplit(iauthors, ", ")[[1]], " and "))
+      split_authors <- gsub(
+        pattern = author, 
+        replacement = paste0("<u>", author, "</u>"), 
+        x = split_authors
+      )
+      split_authors <- gsub(" ", "&nbsp;", split_authors)
+      list_authors <- paste(
+        paste(split_authors[-length(split_authors)], collapse = ", "), 
+        split_authors[length(split_authors)], 
+        sep = " and "
+      )
+      max <- max + length(gregexpr("&nbsp;", list_authors)[[1]]) * 5
+      if (nchar(list_authors) > max) {
+        regmatches(
+          x = list_authors, 
+          m = structure(
+            gregexpr(" ", list_authors)[[1]][max(which(gregexpr(" ", list_authors)[[1]] < max))], 
+            match.length = 1L
+          )
+        ) <- "  \n"
+      }
+      
+      list_authors
+    })
+  }
+  
+  format_package_date <- function(date) {
+    purrr::map(date, function(idate) {
+      gsub(
+        pattern = "May.", 
+        replacement = "May", 
+        x = format(
+          as.Date(paste0(idate, "-01"), format = "%Y-%m-%d"), 
+          format = "%b. %Y"
+        )
+      )
+    })
+  }
+  
+  format_package_url <- function(repo_user, repo_name, where) {
+    purrr::pmap(
+      .l = list(repo_user, repo_name, where), 
+      .f =  function(repo_user, repo_name, where) {
+        switch(
+          EXPR = where,
+          "GitHub" = {
+            paste(
+              "[https://github.com/", repo_user, "/", repo_name, "/](https://github.com/", repo_user, "/", repo_name, "/)", 
+              "\n\n",
+              "::: aside",
+              "\n",
+              "[![GitHub_tag](https://img.shields.io/github/tag/", repo_user, "/", repo_name, ".svg?label=Github&color=4169e1)](https://github.com/", repo_user, "/", repo_name, "/)",
+              "\n",
+              ":::",
+              "\n",
+              sep = ""
+            )
+          },
+          "CRAN" = {
+            paste(
+              "[https://cran.r-project.org/package=", repo_name, "](https://cran.r-project.org/package=", repo_name, ")", 
+              "\n\n",
+              "::: aside",
+              "\n",
+              "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", repo_name, "?color=4169e1)](https://cran.r-project.org/package=", repo_name, ")",
+              "\n",
+              ":::",
+              "\n",
+              sep = ""
+            )
+          },
+          "BOTH" = {
+            paste(
+              "[https://cran.r-project.org/package=", repo_name, "](https://cran.r-project.org/package=", repo_name, ")  ", 
+              "\n",
+              "[https://github.com/", repo_user, "/", repo_name, "/](https://github.com/", repo_user, "/", repo_name, "/)", 
+              "\n\n",
+              "::: aside",
+              "\n",
+              "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", repo_name, "?color=4169e1)](https://cran.r-project.org/package=", repo_name, ")  ", 
+              "\n",
+              "[![GitHub_tag](https://img.shields.io/github/tag/", repo_user,"/", repo_name, ".svg?label=Github&color=4169e1)](https://github.com/", repo_user, "/", repo_name, "/)",
+              "\n",
+              ":::",
+              "\n",
+              sep = ""
+            )
+          }
+        )
+      }
+    )
+  }
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n',
+      '### {name}: {title}',
+      '{format_package_author(authors, author)}',
+      '{purrr::map(where, ~ switch(EXPR = .x, "GitHub" = "GitHub", "CRAN" = "CRAN", "BOTH" = "CRAN"))}',
+      '{format_package_date(since)}',
+      '{format_package_url(user, name, where)}'
+    )
+  
+  c(glue::glue("## R Packages ({length(text)}) {{data-icon=code}}"), text)
+}
+
+awards_section <- function(xlsx = "data/cv.xlsx", sheet = "awards") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {name}',
+      '{institute}',
+      '{city}',
+      '{date}',
+      '{description}',
+      '::: aside\n{add_github_logo(url)}\n:::',
+      '\n\n'
+    )
+  
+  c(glue::glue("## Awards ({length(text)}) {{data-icon=trophy}}"), text)
+}
+
+oral_section <- function(xlsx = "data/cv.xlsx", sheet = "oral") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {title}',
+      '{organiser}',
+      '{city}',
+      '{date}',
+      '::: aside\n{add_github_logo(url)}\n:::',
+      '\n\n'
+    )
+  
+  c(glue::glue("## Oral communications ({length(text)}) {{data-icon=comment-dots}}"), text)
+}
+
+poster_section <- function(xlsx = "data/cv.xlsx", sheet = "poster") {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {title}',
+      '{organiser}',
+      '{city}',
+      '{date}',
+      '::: aside\n{add_github_logo(url)}\n:::',
+      '\n\n'
+    )
+
+  c(glue::glue('## Poster communications ({length(text)}) {{data-icon=file}}'), text)
+}
+
+
+articles_section <- function(bib = "data/cv.bib", author = NULL) {
+  clean_field <- function(pattern, x) {
+    gsub(
+      pattern = paste0("^", pattern, " = "), 
+      replacement = "", 
+      x = gsub(
+        pattern = ",$", 
+        replacement = "", 
+        x = gsub(
+          pattern = "[{}]", 
+          replacement = "", 
+          x = grep(paste0("^", pattern), x, value = TRUE)
+       )
+      )
+    )
+  }
+  
+  read_article <- function(.x) {
+    authors <- do.call("rbind", strsplit(unlist(strsplit(clean_field("author", .x), " and ")), ", "))
+    authors <- gsub(" ", "&nbsp;", paste(authors[, 2], authors[, 1]))
+    authors <- paste(paste(authors[-length(authors)], collapse = ", "), authors[length(authors)], sep = " and ")
+    data.frame(
+      title = clean_field("title", .x),
+      month = gsub("May.", "May", paste0(Hmisc::capitalize(clean_field("month", .x)), ".")),
+      year = clean_field("year", .x),
+      doi = clean_field("doi", .x),
+      authors = authors, 
+      journal = clean_field("journal", .x),
+      first = if (any(grepl("annote", .x))) {
+        grepl("first", clean_field("annote", .x))
+      } else {
+        FALSE
+      },
+      stringsAsFactors = FALSE
+    )
+  }
+  
+  read_bib <- function(path) {
+    big_file <- paste(readLines(path), collapse = "")
+    big_file <- unlist(strsplit(x = big_file, split = "@", fixed = TRUE))
+    big_file <- big_file[nchar(big_file)!=0]
+    
+    all_bib <- lapply(strsplit(x = big_file, split = "\t"), read_article)
+    all_bib <- do.call("rbind.data.frame", all_bib)
+    all_bib[["month"]] <- factor(
+      x = all_bib[["month"]],
+      levels = gsub("May.", "May", paste0(c(
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun", 
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+      ), "."))
+    )
+    all_bib[["doi"]] <- ifelse(
+      test = grepl("^http", all_bib[["doi"]]), 
+      yes = all_bib[["doi"]], 
+      no = paste0("https://www.doi.org/", all_bib[["doi"]])
+    )
+    
+    all_bib[order(all_bib[["year"]], all_bib[["month"]], decreasing = TRUE), ]
+  }
+
+  format_bib_author <- function(authors, first, author, max = 10) {
+    purrr::pmap(list(authors, first), function(iauthors, ifirst) {
+      split_authors <- unlist(strsplit(strsplit(iauthors, ", ")[[1]], " and "))
+      split_authors <- gsub(
+        pattern = author, 
+        replacement = paste0("<u>", author, "</u>", if (ifirst) "<sup>†</sup>" else ""), 
+        x = split_authors
+      )
+      pos_author <- grep(author, split_authors)
+      if (length(split_authors) > 10) {
+        if (pos_author <= max) {
+          paste(
+            paste(split_authors[1:max], collapse = ", "), 
+            "*et&nbsp;al.*"
+          )
+        } else {
+          paste(
+            paste(c(split_authors[1:(max - 1)], "*[...]*, "), collapse = ", "), 
+            paste0(grep(pattern = author, x = split_authors, value = TRUE), "<sup>", pos_author, "</sup>"),
+            "*et&nbsp;al.*"
+          )
+        }
+      } else {
+        paste(
+          paste(split_authors[-length(split_authors)], collapse = ", "), 
+          split_authors[length(split_authors)], 
+          sep = " and "
+        )
+      }
+    })
+  }
+  
+  author <- gsub(" ", "&nbsp;", author)
+  text <- read_bib(bib) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {title}',
+      '{format_bib_author(authors, first, author)}',
+      'N/A',
+      '{month} {year}',
+      '::: aside',
+      '*[{journal}]({doi})*\n{ifelse(first, \'<p style="font-size: 75%;"><sup>†</sup> As first or co-first author.</p>\', \'\')}\n:::',
+    )
+    
+  c(glue::glue("## Publications ({length(text)}) {{data-icon=newspaper}}"), text)
+}

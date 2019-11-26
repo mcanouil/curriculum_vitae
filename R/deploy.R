@@ -35,7 +35,8 @@ deploy_site <- function(
   rmarkdown::render(
     input = "curriculum_vitae.Rmd", 
     output_file = "index.html", 
-    output_dir = dest_dir
+    output_dir = dest_dir, 
+    params = list(author = "Mickaël Canouil")
   )
   commit_message <- sprintf("Built site for %s: %s@%s", commit_message, Sys.Date(), substr(Sys.getenv("TRAVIS_COMMIT"), 1, 7))
   pkgdown:::github_push(dest_dir, commit_message)
