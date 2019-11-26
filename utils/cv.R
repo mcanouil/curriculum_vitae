@@ -94,7 +94,7 @@ sidebar <- function(
 title_section <- function(author = NULL) {
   c(
     "# Main",
-    glue::glue('## {params[["author"]]} {{#title}}')
+    glue::glue('## {author} {{#title}}')
   )
 }
 
