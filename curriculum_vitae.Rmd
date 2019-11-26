@@ -8,10 +8,10 @@ title: '`r paste(params[["author"]], "Curriculum Vitæ", sep = " - ")`'
 author: '`r params[["author"]]`'
 output:
   pagedown::html_resume:
-    css: ["utils/curriculum_vitae.css"]
+    css: "utils/curriculum_vitae.css"
     mathjax: null
     includes:
-      in_header: utils/_ga_script.html
+      in_header: "utils/_ga_script.html"
 editor_options: 
   chunk_output_type: console
 ---
