@@ -27,7 +27,7 @@ contact_section <- function(xlsx = "data/cv.xlsx", sheet = "contact") {
     glue::glue_data(
       '## Contact Info {{#contact}}',
       '\n\n',
-      '- <i class="fa fa-repo_user" style="color: #4169e1;"></i> {position}',
+      '- <i class="fa fa-user" style="color: #4169e1;"></i> {position}',
       '\n',
       '- <i class="fa fa-university" style="color: #4169e1;"></i> {institute}',
       '\n',
