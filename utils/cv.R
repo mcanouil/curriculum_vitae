@@ -98,7 +98,7 @@ title_section <- function(author = NULL) {
   )
 }
 
-education_section <- function(xlsx = "data/cv.xlsx", sheet = "education") {
+education_section <- function(xlsx = "data/cv.xlsx", sheet = "education", page_break_after = FALSE) {
   text <- readxl::read_xlsx(xlsx, sheet) %>% 
     dplyr::slice(dplyr::n():1) %>% 
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
@@ -111,10 +111,14 @@ education_section <- function(xlsx = "data/cv.xlsx", sheet = "education") {
       '\n\n'
     )
   
-  c("## Education {data-icon=graduation-cap data-concise=true}", text)
+  if (page_break_after) {
+    c("## Education {data-icon=graduation-cap data-concise=true .break-after-me}", text)
+  } else {
+    c("## Education {data-icon=graduation-cap data-concise=true}", text)
+  }
 }
 
-experience_section <- function(xlsx = "data/cv.xlsx", sheet = "experience") {
+experience_section <- function(xlsx = "data/cv.xlsx", sheet = "experience", page_break_after = FALSE) {
   text <- readxl::read_xlsx(xlsx, sheet) %>% 
     dplyr::slice(dplyr::n():1) %>% 
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
@@ -127,10 +131,14 @@ experience_section <- function(xlsx = "data/cv.xlsx", sheet = "experience") {
       '\n\n'
     )
   
-  c("## Professional & Research Experience {data-icon=laptop}", text)
+  if (page_break_after) {
+    c("## Professional & Research Experience {data-icon=laptop .break-after-me}", text)
+  } else {
+    c("## Professional & Research Experience {data-icon=laptop}", text)
+  }
 }
 
-teaching_section <- function(xlsx = "data/cv.xlsx", sheet = "teaching") {
+teaching_section <- function(xlsx = "data/cv.xlsx", sheet = "teaching", page_break_after = FALSE) {
   text <- readxl::read_xlsx(xlsx, sheet) %>% 
     dplyr::slice(dplyr::n():1) %>% 
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
@@ -143,12 +151,16 @@ teaching_section <- function(xlsx = "data/cv.xlsx", sheet = "teaching") {
       '\n\n'
     )
   
-  c(glue::glue("## Teaching Experience ({length(text)}) {{data-icon=chalkboard-teacher}}"), text)
+  if (page_break_after) {
+    c(glue::glue("## Teaching Experience ({length(text)}) {{data-icon=chalkboard-teacher .break-after-me}}"), text)
+  } else {
+    c(glue::glue("## Teaching Experience ({length(text)}) {{data-icon=chalkboard-teacher}}"), text)
+  }
 }
 
 
 
-packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author = NULL) {
+packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author = NULL, page_break_after = FALSE) {
   format_package_author <- function(authors, author, max = 57) {
     purrr::map(authors, function(iauthors) {
       split_authors <- unlist(strsplit(strsplit(iauthors, ", ")[[1]], " and "))
@@ -255,10 +267,14 @@ packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author =
       '{format_package_url(user, name, where)}'
     )
   
-  c(glue::glue("## R Packages ({length(text)}) {{data-icon=code}}"), text)
+  if (page_break_after) {
+    c(glue::glue("## R Packages ({length(text)}) {{data-icon=code .break-after-me}}"), text)
+  } else {
+    c(glue::glue("## R Packages ({length(text)}) {{data-icon=code}}"), text)
+  }
 }
 
-awards_section <- function(xlsx = "data/cv.xlsx", sheet = "awards") {
+awards_section <- function(xlsx = "data/cv.xlsx", sheet = "awards", page_break_after = FALSE) {
   text <- readxl::read_xlsx(xlsx, sheet) %>% 
     dplyr::slice(dplyr::n():1) %>% 
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
@@ -272,26 +288,14 @@ awards_section <- function(xlsx = "data/cv.xlsx", sheet = "awards") {
       '\n\n'
     )
   
-  c(glue::glue("## Awards ({length(text)}) {{data-icon=trophy}}"), text)
+  if (page_break_after) {
+    c(glue::glue("## Awards ({length(text)}) {{data-icon=trophy .break-after-me}}"), text)
+  } else {
+    c(glue::glue("## Awards ({length(text)}) {{data-icon=trophy}}"), text)
+  }
 }
 
-oral_section <- function(xlsx = "data/cv.xlsx", sheet = "oral") {
-  text <- readxl::read_xlsx(xlsx, sheet) %>% 
-    dplyr::slice(dplyr::n():1) %>% 
-    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
-    glue::glue_data(.sep = '\n\n', 
-      '### {title}',
-      '{organiser}',
-      '{city}',
-      '{date}',
-      '::: aside\n{add_github_logo(url)}\n:::',
-      '\n\n'
-    )
-  
-  c(glue::glue("## Oral communications ({length(text)}) {{data-icon=comment-dots}}"), text)
-}
-
-poster_section <- function(xlsx = "data/cv.xlsx", sheet = "poster") {
+oral_section <- function(xlsx = "data/cv.xlsx", sheet = "oral", page_break_after = FALSE) {
   text <- readxl::read_xlsx(xlsx, sheet) %>% 
     dplyr::slice(dplyr::n():1) %>% 
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
@@ -304,11 +308,35 @@ poster_section <- function(xlsx = "data/cv.xlsx", sheet = "poster") {
       '\n\n'
     )
 
-  c(glue::glue('## Poster communications ({length(text)}) {{data-icon=file}}'), text)
+  if (page_break_after) {
+    c(glue::glue("## Oral communications ({length(text)}) {{data-icon=comment-dots .break-after-me}}"), text)
+  } else {
+    c(glue::glue("## Oral communications ({length(text)}) {{data-icon=comment-dots}}"), text)
+  }
+}
+
+poster_section <- function(xlsx = "data/cv.xlsx", sheet = "poster", page_break_after = FALSE) {
+  text <- readxl::read_xlsx(xlsx, sheet) %>% 
+    dplyr::slice(dplyr::n():1) %>% 
+    dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
+    glue::glue_data(.sep = '\n\n', 
+      '### {title}',
+      '{organiser}',
+      '{city}',
+      '{date}',
+      '::: aside\n{add_github_logo(url)}\n:::',
+      '\n\n'
+    )
+
+  if (page_break_after) {
+    c(glue::glue('## Poster communications ({length(text)}) {{data-icon=file .break-after-me}}'), text)
+  } else {
+    c(glue::glue('## Poster communications ({length(text)}) {{data-icon=file}}'), text)
+  }
 }
 
 
-articles_section <- function(bib = "data/cv.bib", author = NULL) {
+articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_after = FALSE) {
   clean_field <- function(pattern, x) {
     gsub(
       pattern = paste0("^", pattern, " = "), 
@@ -386,7 +414,7 @@ articles_section <- function(bib = "data/cv.bib", author = NULL) {
         } else {
           paste(
             paste(c(split_authors[1:(max - 1)], "*[...]*, "), collapse = ", "), 
-            paste0(grep(pattern = author, x = split_authors, value = TRUE), "<sup>", pos_author, "</sup>"),
+            paste0(grep(pattern = author, x = split_authors, value = TRUE), "<sup>", pos_author, "/", length(split_authors), "</sup>"),
             "*et&nbsp;al.*"
           )
         }
@@ -410,6 +438,10 @@ articles_section <- function(bib = "data/cv.bib", author = NULL) {
       '::: aside',
       '*[{journal}]({doi})*\n{ifelse(first, \'<p style="font-size: 75%;"><sup>†</sup> As first or co-first author.</p>\', \'\')}\n:::',
     )
-    
-  c(glue::glue("## Publications ({length(text)}) {{data-icon=newspaper}}"), text)
+  
+  if (page_break_after) {
+    c(glue::glue("## Publications ({length(text)}) {{data-icon=newspaper .break-after-me}}"), text)
+  } else {
+    c(glue::glue("## Publications ({length(text)}) {{data-icon=newspaper}}"), text)
+  }
 }

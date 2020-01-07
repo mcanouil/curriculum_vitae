@@ -132,6 +132,11 @@ h1, h2 {
 
 .main-block {
   margin-top: 0.1in;
+  /*break-inside: avoid;*/
+}
+
+.break-after-me {
+  break-after: page;
 }
 
 #main h2 {
