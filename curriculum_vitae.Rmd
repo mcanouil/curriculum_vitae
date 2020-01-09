@@ -44,11 +44,11 @@ cat(
   profil_section(xlsx = params[["xlsx"]], sheet = "profil"),
   education_section(xlsx = params[["xlsx"]], sheet = "education"),
   experience_section(xlsx = params[["xlsx"]], sheet = "experience"),
-  teaching_section(xlsx = params[["xlsx"]], sheet = "teaching", page_break_after = TRUE),
+  teaching_section(xlsx = params[["xlsx"]], sheet = "teaching"),
   awards_section(xlsx = params[["xlsx"]], sheet = "awards"),
   oral_section(xlsx = params[["xlsx"]], sheet = "oral"),
-  poster_section(xlsx = params[["xlsx"]], sheet = "poster", page_break_after = TRUE),
-  packages_section(xlsx = params[["xlsx"]], sheet = "packages", author = params[["author"]], page_break_after = TRUE),
+  poster_section(xlsx = params[["xlsx"]], sheet = "poster"),
+  packages_section(xlsx = params[["xlsx"]], sheet = "packages", author = params[["author"]]),
   articles_section(bib = params[["bib"]], author = params[["author"]]),
   sep = "\n"
 )
