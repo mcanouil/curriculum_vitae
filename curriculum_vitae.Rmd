@@ -31,8 +31,34 @@ source("utils/cv.R")
 
 # Aside
 
-```{r, out.extra = 'style="width=226px;" id="picture"'}
+```{r, out.extra = 'style="width: 226px;" id="picture"'}
 knitr::include_graphics(params[["picture"]])
+```
+
+```{r, out.extra = 'style="display: block; margin-left: auto; margin-right: auto; width: 226px;"'}
+dir.create(file.path(tempdir(), "hex"), showWarnings = FALSE)
+source(file.path("utils", "hexwall.R"))
+hex_list <- c(
+  "lille_rug.png", 
+  "omicsr.png", 
+  "coeos.png",
+  "carot.png", 
+  "insane.png", 
+  "mistr.png", 
+  "nacho.png", 
+  "rain.png"
+)
+hex_logo <- glue::glue("https://raw.githubusercontent.com/mcanouil/hex-stickers/master/PNG/{tolower(hex_list)}")
+hex_logo_ordered <- file.path(tempdir(), "hex", paste(1:length(hex_logo), basename(hex_logo), sep = "-"))
+utils::download.file(url = hex_logo, destfile = hex_logo_ordered)
+hex_wall <- hexwall(
+  path = file.path(tempdir(), "hex"),
+  sticker_row_size = 8,
+  sticker_width = 80
+)
+# magick::image_write(image = hex_wall, path = file.path("data", "hex_wall.png"), format = "png")
+unlink(file.path(tempdir(), "hex"), recursive = TRUE)
+hex_wall
 ```
 
 ```{r}

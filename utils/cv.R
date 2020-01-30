@@ -258,6 +258,7 @@ packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author =
       }
     )
   }
+  
   text <- readxl::read_xlsx(xlsx, sheet) %>% 
     dplyr::slice(dplyr::n():1) %>% 
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
@@ -269,10 +270,18 @@ packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author =
       '{format_package_url(user, name, where)}'
     )
   
+
+  
   if (page_break_after) {
-    c(glue::glue("## R Packages ({length(text)}) {{data-icon=code .break-after-me}}"), text)
+    c(
+      glue::glue("## R Packages ({length(text)}) {{data-icon=code .break-after-me}}"), 
+      text
+    )
   } else {
-    c(glue::glue("## R Packages ({length(text)}) {{data-icon=code}}"), text)
+    c(
+      glue::glue("## R Packages ({length(text)}) {{data-icon=code}}"), 
+      text
+    )
   }
 }
 
