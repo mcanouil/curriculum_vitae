@@ -3,7 +3,11 @@ cache: packages
 
 pandoc_version: 2.3.1
 
-# script: Rscript -e 'rmarkdown::render_site()'
+before_install:
+  - sudo add-apt-repository --yes ppa:cran/imagemagick
+  - sudo apt-get --yes --force-yes update -qq
+  - sudo apt-get install --yes libmagick++-dev
+
 script: 
   - Rscript -e 'rmarkdown::render(input = "curriculum_vitae.Rmd")'
 
