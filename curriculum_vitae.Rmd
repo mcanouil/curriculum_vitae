@@ -35,7 +35,18 @@ source("utils/cv.R")
 knitr::include_graphics(params[["picture"]])
 ```
 
-```{r, out.extra = 'style="display: block; margin-left: auto; margin-right: auto; width: 226px;"'}
+```{r}
+cat(
+  contact_section(xlsx = params[["xlsx"]], sheet = "contact"),
+  skills_section(xlsx = params[["xlsx"]], sheet = "skills"),
+  disclaimer_section(text = NULL),
+  title_section(author = params[["author"]]),
+  profil_section(xlsx = params[["xlsx"]], sheet = "profil"),
+  sep = "\n"
+)
+```
+
+```{r, out.extra = 'style="display: block; margin-left: auto; margin-right: auto; width: 90%;"'}
 dir.create(file.path(tempdir(), "hex"), showWarnings = FALSE)
 source(file.path("utils", "hexwall.R"))
 hex_list <- c(
@@ -54,7 +65,7 @@ utils::download.file(url = hex_logo, destfile = hex_logo_ordered, method = "libc
 hex_wall <- hexwall(
   path = file.path(tempdir(), "hex"),
   sticker_row_size = 8,
-  sticker_width = 80
+  sticker_width = 181
 )
 # magick::image_write(image = hex_wall, path = file.path("data", "hex_wall.png"), format = "png")
 unlink(file.path(tempdir(), "hex"), recursive = TRUE)
@@ -63,16 +74,11 @@ hex_wall
 
 ```{r}
 cat(
-  contact_section(xlsx = params[["xlsx"]], sheet = "contact"),
-  skills_section(xlsx = params[["xlsx"]], sheet = "skills"),
-  disclaimer_section(text = NULL),
-  title_section(author = params[["author"]]),
-  profil_section(xlsx = params[["xlsx"]], sheet = "profil"),
   education_section(xlsx = params[["xlsx"]], sheet = "education"),
-  experience_section(xlsx = params[["xlsx"]], sheet = "experience"),
+  experience_section(xlsx = params[["xlsx"]], sheet = "experience", page_break_after = TRUE),
   teaching_section(xlsx = params[["xlsx"]], sheet = "teaching"),
   awards_section(xlsx = params[["xlsx"]], sheet = "awards"),
-  oral_section(xlsx = params[["xlsx"]], sheet = "oral"),
+  oral_section(xlsx = params[["xlsx"]], sheet = "oral", page_break_after = TRUE),
   poster_section(xlsx = params[["xlsx"]], sheet = "poster"),
   packages_section(xlsx = params[["xlsx"]], sheet = "packages", author = params[["author"]]),
   articles_section(bib = params[["bib"]], author = params[["author"]]),
