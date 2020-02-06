@@ -50,7 +50,7 @@ cat(
 dir.create(file.path(tempdir(), "hex"), showWarnings = FALSE)
 source(file.path("utils", "hexwall.R"))
 hex_list <- c(
-  "lille_rug.png", 
+  "rlille.png", 
   "omicsr.png", 
   "coeos.png",
   "carot.png", 
