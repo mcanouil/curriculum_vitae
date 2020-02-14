@@ -264,7 +264,8 @@ packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author =
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
     glue::glue_data(.sep = '\n\n',
       '### {name}: {title}',
-      '{format_package_author(authors, author)}',
+      # '{format_package_author(authors, author)}',
+      '(As *{tolower(type)}*)',
       '{purrr::map(where, ~ switch(EXPR = .x, "GitHub" = "GitHub", "CRAN" = "CRAN", "BOTH" = "CRAN"))}',
       '{format_package_date(since)}',
       '{format_package_url(user, name, where)}'
