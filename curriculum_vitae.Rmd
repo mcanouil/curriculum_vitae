@@ -14,6 +14,13 @@ output:
       in_header: "utils/_ga_script.html"
 editor_options: 
   chunk_output_type: console
+knit: (function(inputFile, encoding) {
+    rmarkdown::render(
+      inputFile,
+      encoding = encoding, 
+      output_dir = "docs"
+    )
+  })
 ---
 
 ```{r setup, include = FALSE}

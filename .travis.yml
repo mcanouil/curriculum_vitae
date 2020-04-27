@@ -9,11 +9,11 @@ before_install:
   - sudo apt-get install --yes libmagick++-dev
 
 script: 
-  - Rscript -e 'rmarkdown::render(input = "curriculum_vitae.Rmd")'
+  - Rscript -e 'rmarkdown::render(input = "curriculum_vitae.Rmd", output_dir = "docs")'
 
 deploy:
   provider: script
-  script: curl --max-time 10 --retry 4 --user ${FTP_USER}:${FTP_PASSWORD} -T curriculum_vitae.html ftp://${FTP_URL}/www/index.html
+  script: curl --max-time 10 --retry 4 --user ${FTP_USER}:${FTP_PASSWORD} -T docs/curriculum_vitae.html ftp://${FTP_URL}/www/index.html
   skip_cleanup: true
 
 notifications:
