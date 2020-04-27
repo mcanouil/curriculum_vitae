@@ -19,3 +19,8 @@ deploy:
   provider: script
   script: Rscript -e 'source("utils/deploy.R"); deploy_site(commit_message = "curriculum_vitae")'
   skip_cleanup: true
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
