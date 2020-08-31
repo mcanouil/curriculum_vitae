@@ -8,7 +8,7 @@ title: '`r paste(params[["author"]], "Curriculum Vitæ", sep = " - ")`'
 author: '`r params[["author"]]`'
 output:
   pagedown::html_resume:
-    css: ["utils/curriculum_vitae.css", "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"]
+    css: ["utils/curriculum_vitae.css", "utils/fontawesome-free-5.14.0-web/css/all.min.css"]
     mathjax: null
     includes:
       in_header: "utils/_ga_script.html"
