@@ -39,11 +39,11 @@ contact_section <- function(xlsx = "data/cv.xlsx", sheet = "contact") {
       '\n',
       '- <i class="fab fa-orcid" style="color: #4169e1;"></i> [{orcid}](https://orcid.org/{orcid})',
       '\n',
-      '- <i class="fa fa-linkedin" style="color: #4169e1;"></i> [linkedin.com/in/{linkedin}](https://www.linkedin.com/in/{linkedin})',
+      '- <i class="fa fa-linkedin" style="color: #4169e1;"></i> [@{linkedin}](https://www.linkedin.com/in/{linkedin})',
       '\n',
-      '- <i class="fa fa-github" style="color: #4169e1;"></i> [github.com/{github}](https://github.com/{github})',
+      '- <i class="fa fa-github" style="color: #4169e1;"></i> [@{github}](https://github.com/{github})',
       '\n',
-      '- <i class="fa fa-twitter" style="color: #4169e1;"></i> [twitter.com/{twitter}](https://twitter.com/{twitter})',
+      '- <i class="fa fa-twitter" style="color: #4169e1;"></i> [@{twitter}](https://twitter.com/{twitter})',
       '\n\n'
     )
 }
