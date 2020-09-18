@@ -39,11 +39,13 @@ contact_section <- function(xlsx = "data/cv.xlsx", sheet = "contact") {
       '\n',
       '- <i class="fab fa-orcid" style="color: #4169e1;"></i> [{orcid}](https://orcid.org/{orcid})',
       '\n',
-      '- <i class="fa fa-linkedin" style="color: #4169e1;"></i> [@{linkedin}](https://www.linkedin.com/in/{linkedin})',
+      '- <i class="fa fa-linkedin" style="color: #4169e1;"></i> [{linkedin}](https://www.linkedin.com/in/{linkedin})',
       '\n',
-      '- <i class="fa fa-github" style="color: #4169e1;"></i> [@{github}](https://github.com/{github})',
+      '- <i class="fa fa-github" style="color: #4169e1;"></i> [{github}](https://github.com/{github})',
       '\n',
-      '- <i class="fa fa-twitter" style="color: #4169e1;"></i> [@{twitter}](https://twitter.com/{twitter})',
+      '- <i class="fa fa-twitter" style="color: #4169e1;"></i> [{twitter}](https://twitter.com/{twitter})',
+      '\n',
+      '- <i class="fab fa-r-project" style="color: #4169e1;"></i> {rgroup}',
       '\n\n'
     )
 }
@@ -91,7 +93,6 @@ sidebar <- function(
     sep = "\n\n"
   )
 }
-
 
 title_section <- function(author = NULL) {
   c(
@@ -159,8 +160,6 @@ teaching_section <- function(xlsx = "data/cv.xlsx", sheet = "teaching", page_bre
     c(glue::glue("## Teaching Experience ({length(text)}) {{data-icon=chalkboard-teacher}}"), text)
   }
 }
-
-
 
 packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author = NULL, page_break_after = FALSE) {
   format_package_author <- function(authors, author, max = 57) {
@@ -347,7 +346,6 @@ poster_section <- function(xlsx = "data/cv.xlsx", sheet = "poster", page_break_a
   }
 }
 
-
 articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_after = FALSE) {
   clean_field <- function(pattern, x) {
     gsub(
@@ -388,7 +386,7 @@ articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_afte
   read_bib <- function(path) {
     big_file <- paste(readLines(path), collapse = "")
     big_file <- unlist(strsplit(x = big_file, split = "@", fixed = TRUE))
-    big_file <- big_file[nchar(big_file)!=0]
+    big_file <- big_file[nchar(big_file) != 0]
     
     all_bib <- lapply(strsplit(x = big_file, split = "\t"), read_article)
     all_bib <- do.call("rbind.data.frame", all_bib)
@@ -417,32 +415,75 @@ articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_afte
         x = split_authors
       )
       pos_author <- grep(author, split_authors)
-      if (length(split_authors) > 10) {
-        if (pos_author <= max) {
-          paste(
-            paste(split_authors[1:max], collapse = ", "), 
-            "*et&nbsp;al.*"
+      
+      switch(
+        EXPR = paste(abs(c(0, length(split_authors)) - pos_author) > ceiling(max / 2), collapse = "--"),
+        "TRUE--TRUE" = {
+          split_authors[pos_author] <- paste0(
+            split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
           )
-        } else {
+          paste0(
+            paste(
+              c(
+                split_authors[1:ceiling((max - 1) / 2)],
+                "*[...]*",
+                split_authors[pos_author],
+                "*[...]*",
+                split_authors[(length(split_authors) - (max - ceiling((max - 1) / 2) - 1)):(length(split_authors) - 1)]
+              ),
+              collapse = ", "
+            ),
+            " and ", 
+            split_authors[length(split_authors)]
+          )
+        },
+        "TRUE--FALSE" = {
+          split_authors[pos_author] <- paste0(
+            split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
+          )
+          paste0(
+            paste(
+              c(
+                split_authors[1:ceiling(max / 2)],
+                "*[...]*",
+                split_authors[(length(split_authors) - (max - ceiling(max / 2))):(length(split_authors) - 1)]
+              ),
+              collapse = ", "
+            ),
+            " and ", 
+            split_authors[length(split_authors)]
+          )
+        },
+        "FALSE--TRUE" = {
+          split_authors[pos_author] <- paste0(
+            split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
+          )
+          paste0(
+            paste(
+              c(
+                split_authors[1:ceiling(max / 2)],
+                "*[...]*",
+                split_authors[(length(split_authors) - (max - ceiling(max / 2))):(length(split_authors) - 1)]
+              ),
+              collapse = ", "
+            ),
+            " and ", 
+            split_authors[length(split_authors)]
+          )
+        },
+        "FALSE--FALSE" = {
           paste(
-            paste(c(split_authors[1:(max - 1)], "*[...]*, "), collapse = ", "), 
-            paste0(grep(pattern = author, x = split_authors, value = TRUE), "<sup>", pos_author, "/", length(split_authors), "</sup>"),
-            "*et&nbsp;al.*"
+            paste(split_authors[-length(split_authors)], collapse = ", "), 
+            split_authors[length(split_authors)], 
+            sep = " and "
           )
         }
-      } else {
-        paste(
-          paste(split_authors[-length(split_authors)], collapse = ", "), 
-          split_authors[length(split_authors)], 
-          sep = " and "
-        )
-      }
+      )
     })
   }
   
   author <- gsub(" ", "&nbsp;", author)
-  text <- read_bib(bib) %>% 
-    glue::glue_data(.sep = '\n\n', 
+  text <- glue::glue_data(.x = read_bib(bib), .sep = '\n\n', 
       '### {title}',
       '{format_bib_author(authors, first, author)}',
       'N/A',
