@@ -60,7 +60,7 @@ jobs:
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
           
-      - name: Install xkcd
+      - name: Install R dependencies
         if: runner.os != 'Windows'
         run: |
           Rscript -e 'remotes::install_deps(dependencies = TRUE)'
