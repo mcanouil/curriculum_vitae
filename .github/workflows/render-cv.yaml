@@ -53,9 +53,9 @@ jobs:
         env:
           RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
         run: |
-          add-apt-repository --yes ppa:cran/imagemagick
-          apt-get --yes --force-yes update -qq
-          apt-get install --yes libmagick++-dev
+          sudo add-apt-repository --yes ppa:cran/imagemagick
+          sudo apt-get --yes --force-yes update -qq
+          sudo apt-get install --yes libmagick++-dev
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
