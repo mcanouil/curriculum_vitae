@@ -54,7 +54,10 @@ skills_section <- function(xlsx = "data/cv.xlsx", sheet = "skills") {
   readxl::read_xlsx(xlsx, sheet) %>% 
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
     dplyr::group_by(level) %>% 
-    dplyr::summarise(what = as.character(glue::glue_collapse(what, sep = ", ", last = " and "))) %>% 
+    dplyr::summarise(
+      what = as.character(glue::glue_collapse(what, sep = ", ", last = " and ")), 
+      .groups = "drop"
+    ) %>% 
     tidyr::pivot_wider(names_from = level, values_from = what) %>% 
     glue::glue_data(
       '## Computer Skills {{#skills}}',
@@ -365,7 +368,9 @@ articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_afte
   
   read_article <- function(.x) {
     authors <- do.call("rbind", strsplit(unlist(strsplit(clean_field("author", .x), " and ")), ", "))
-    authors <- gsub(" ", "&nbsp;", paste(authors[, 2], authors[, 1]))
+    authors <- apply(X = authors[, c(2, 1)], MARGIN = 1, FUN = function(irow) {
+      gsub(" ", "&nbsp;", paste(unique(irow), collapse = " "))
+    })
     authors <- paste(paste(authors[-length(authors)], collapse = ", "), authors[length(authors)], sep = " and ")
     data.frame(
       title = clean_field("title", .x),
@@ -415,70 +420,77 @@ articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_afte
         x = split_authors
       )
       pos_author <- grep(author, split_authors)
-      
-      switch(
-        EXPR = paste(abs(c(0, length(split_authors)) - pos_author) > ceiling(max / 2), collapse = "--"),
-        "TRUE--TRUE" = {
-          split_authors[pos_author] <- paste0(
-            split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
-          )
-          paste0(
-            paste(
-              c(
-                split_authors[1:ceiling((max - 1) / 2)],
-                "*[...]*",
-                split_authors[pos_author],
-                "*[...]*",
-                split_authors[(length(split_authors) - (max - ceiling((max - 1) / 2) - 1)):(length(split_authors) - 1)]
+      if (length(split_authors) <= max) {
+        paste(
+          paste(split_authors[-length(split_authors)], collapse = ", "), 
+          split_authors[length(split_authors)], 
+          sep = " and "
+        )
+      } else {
+        switch(
+          EXPR = paste(abs(c(0, length(split_authors)) - pos_author) > ceiling(max / 2), collapse = "--"),
+          "TRUE--TRUE" = {
+            split_authors[pos_author] <- paste0(
+              split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
+            )
+            paste0(
+              paste(
+                c(
+                  split_authors[1:ceiling((max - 1) / 2)],
+                  "*[...]*",
+                  split_authors[pos_author],
+                  "*[...]*",
+                  split_authors[(length(split_authors) - (max - 1 - ceiling((max - 1) / 2))):(length(split_authors) - 1)]
+                ),
+                collapse = ", "
               ),
-              collapse = ", "
-            ),
-            " and ", 
-            split_authors[length(split_authors)]
-          )
-        },
-        "TRUE--FALSE" = {
-          split_authors[pos_author] <- paste0(
-            split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
-          )
-          paste0(
-            paste(
-              c(
-                split_authors[1:ceiling(max / 2)],
-                "*[...]*",
-                split_authors[(length(split_authors) - (max - ceiling(max / 2))):(length(split_authors) - 1)]
+              " and ", 
+              split_authors[length(split_authors)]
+            )
+          },
+          "TRUE--FALSE" = {
+            split_authors[pos_author] <- paste0(
+              split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
+            )
+            paste0(
+              paste(
+                c(
+                  split_authors[1:ceiling(max / 2)],
+                  "*[...]*",
+                  split_authors[(length(split_authors) - (max - 1 - ceiling(max / 2))):(length(split_authors) - 1)]
+                ),
+                collapse = ", "
               ),
-              collapse = ", "
-            ),
-            " and ", 
-            split_authors[length(split_authors)]
-          )
-        },
-        "FALSE--TRUE" = {
-          split_authors[pos_author] <- paste0(
-            split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
-          )
-          paste0(
-            paste(
-              c(
-                split_authors[1:ceiling(max / 2)],
-                "*[...]*",
-                split_authors[(length(split_authors) - (max - ceiling(max / 2))):(length(split_authors) - 1)]
+              " and ", 
+              split_authors[length(split_authors)]
+            )
+          },
+          "FALSE--TRUE" = {
+            split_authors[pos_author] <- paste0(
+              split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
+            )
+            paste0(
+              paste(
+                c(
+                  split_authors[1:ceiling(max / 2)],
+                  "*[...]*",
+                  split_authors[(length(split_authors) - (max - 1 - ceiling(max / 2))):(length(split_authors) - 1)]
+                ),
+                collapse = ", "
               ),
-              collapse = ", "
-            ),
-            " and ", 
-            split_authors[length(split_authors)]
-          )
-        },
-        "FALSE--FALSE" = {
-          paste(
-            paste(split_authors[-length(split_authors)], collapse = ", "), 
-            split_authors[length(split_authors)], 
-            sep = " and "
-          )
-        }
-      )
+              " and ", 
+              split_authors[length(split_authors)]
+            )
+          },
+          "FALSE--FALSE" = {
+            paste(
+              paste(split_authors[-length(split_authors)], collapse = ", "), 
+              split_authors[length(split_authors)], 
+              sep = " and "
+            )
+          }
+        )
+      }
     })
   }
   
