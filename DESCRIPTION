@@ -15,3 +15,4 @@ Imports:
     magick,
     colorspace
 SystemRequirements: ImageMagick++: ImageMagick-c++-devel (rpm) or libmagick++-dev (deb)
+License: MIT + file LICENSE
