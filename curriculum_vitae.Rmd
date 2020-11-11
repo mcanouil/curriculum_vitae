@@ -47,7 +47,7 @@ cat(
 )
 ```
 
-```{r, out.extra = 'style="display: block; margin-left: auto; margin-right: auto; width: 90%;"'}
+```{r, eval = FALSE, out.extra = 'style="display: block; margin-left: auto; margin-right: auto; width: 90%;"'}
 dir.create(file.path(tempdir(), "hex"), showWarnings = FALSE)
 source(file.path("utils", "hexwall.R"))
 hex_list <- c(
@@ -77,7 +77,7 @@ hex_wall
 cat(
   education_section(xlsx = params[["xlsx"]], sheet = "education"),
   experience_section(xlsx = params[["xlsx"]], sheet = "experience", page_break_after = TRUE),
-  teaching_section(xlsx = params[["xlsx"]], sheet = "teaching"),
+  workshop_section(xlsx = params[["xlsx"]], sheet = "workshop"),
   awards_section(xlsx = params[["xlsx"]], sheet = "awards"),
   oral_section(xlsx = params[["xlsx"]], sheet = "oral", page_break_after = TRUE),
   poster_section(xlsx = params[["xlsx"]], sheet = "poster"),

@@ -144,13 +144,13 @@ experience_section <- function(xlsx = "data/cv.xlsx", sheet = "experience", page
   }
 }
 
-teaching_section <- function(xlsx = "data/cv.xlsx", sheet = "teaching", page_break_after = FALSE) {
+workshop_section <- function(xlsx = "data/cv.xlsx", sheet = "workshop", page_break_after = FALSE) {
   text <- readxl::read_xlsx(xlsx, sheet) %>% 
     dplyr::slice(dplyr::n():1) %>% 
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
     glue::glue_data(.sep = '\n\n', 
       '### {title}',
-      '{type}  \n{institute}',
+      '{type}',
       '{city}',
       '{date}',
       '::: aside\n{add_github_logo(url)}\n:::',
@@ -158,9 +158,9 @@ teaching_section <- function(xlsx = "data/cv.xlsx", sheet = "teaching", page_bre
     )
   
   if (page_break_after) {
-    c(glue::glue("## Teaching Experience ({length(text)}) {{data-icon=chalkboard-teacher .break-after-me}}"), text)
+    c(glue::glue("## Workshop Experience ({length(text)}) {{data-icon=chalkboard-teacher .break-after-me}}"), text)
   } else {
-    c(glue::glue("## Teaching Experience ({length(text)}) {{data-icon=chalkboard-teacher}}"), text)
+    c(glue::glue("## Workshop Experience ({length(text)}) {{data-icon=chalkboard-teacher}}"), text)
   }
 }
 
