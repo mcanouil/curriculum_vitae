@@ -68,9 +68,8 @@ jobs:
       - name: Render CV
         run: |
           Rscript -e 'rmarkdown::render("curriculum_vitae.Rmd", output_file = "index.html", output_dir = "docs")'
-          git config --global user.name "${{secrets.NAME}}"
-          git config --global user.email ${{secrets.EMAIL}}
+          git config --global user.name "${{github.actor}}"
           git commit -am 'update CV' || echo "No changes to commit"
-          git push https://${{github.actor}}:${{secrets.GITHUB_TOKEN}}@github.com/${{github.repository}}.git HEAD:${{ github.ref }} || echo "No changes to commit"
+          git push || echo "No changes to commit"
           cd docs && curl --fail --silent --max-time 10 --retry 4 --user ${{secrets.FTP_USER}}:${{secrets.FTP_PASSWORD}} --upload-file index.html ftp://${{secrets.FTP_URL}}/www/index.html
 
