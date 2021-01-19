@@ -1,14 +1,9 @@
-@page {
-  size: a4 portrait;
-  margin: 1in 0.5in 1in 0.25in;
-}
-
 * {
   box-sizing: border-box;
 }
 
 :root {
-  --page-width: 8.5in;
+  --page-width: 8.26in;
   --margin-right: 0.5in;
   --margin-left: 0.25in;
   --content-width: calc(var(--page-width) - var(--margin-right) - var(--margin-left));
@@ -43,6 +38,8 @@
 }
 
 @page {
+  size: A4 portrait;
+  margin: 1in 0.5in 1in 0.25in;
   background: linear-gradient(to left, var(--sidebar-background-color), var(--sidebar-background-color) var(--sidebar-background-width), white var(--sidebar-background-width));
 }
 
