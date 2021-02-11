@@ -27,7 +27,7 @@ knitr::opts_chunk$set(
   error = FALSE, 
   warning = FALSE
 )
-source("utils/cv.R")
+source(file.path("utils", "cv.R"))
 ```
 
 # Aside
