@@ -2,6 +2,8 @@
   box-sizing: border-box;
 }
 
+@import url("https://use.fontawesome.com/releases/v5.14.0/css/all.css");
+
 :root {
   --page-width: 8.26in;
   --margin-right: 0.5in;
