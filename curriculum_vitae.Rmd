@@ -8,10 +8,10 @@ title: '`r paste(params[["author"]], "Curriculum Vitæ", sep = " - ")`'
 author: '`r params[["author"]]`'
 output:
   pagedown::html_resume:
-    css: ["utils/curriculum_vitae.css", "utils/fontawesome-free-5.14.0-web/css/all.min.css"]
+    css: "utils/curriculum_vitae.css"
     mathjax: null
     includes:
-      in_header: "utils/_ga_script.html"
+      in_header: "utils/_favicon.html"
 editor_options: 
   chunk_output_type: console
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, output_file = "index.html", encoding = encoding, output_dir = "docs") })
