@@ -12,7 +12,6 @@ Imports:
     magrittr,
     purrr,
     readxl,
-    magick,
-    colorspace
-SystemRequirements: ImageMagick++: ImageMagick-c++-devel (rpm) or libmagick++-dev (deb)
+    colorspace,
+    fontawesome
 License: CC BY 4.0

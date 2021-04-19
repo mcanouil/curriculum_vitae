@@ -1,11 +1,15 @@
 `%>%` <- magrittr::`%>%`
 
+fa <- fontawesome::fa
+
+main_colour <- "#333333"
+
 add_github_logo <- function(url) {
-  gsub(
+  sub("[GitHub]", paste0('[', fa("github", fill = main_colour), ' GitHub]'), gsub(
     pattern = "(.*)https://github.com/(.*)", 
-    replacement = '\\1[<i class="fa fa-github"></i> GitHub](https://github.com/\\2)', 
+    replacement = glue::glue('\\1[GitHub](https://github.com/\\2)'), 
     x = url
-  )
+  ), fixed = TRUE) 
 }
 
 profil_section <- function(xlsx = "data/cv.xlsx", sheet = "profil") {
@@ -27,25 +31,25 @@ contact_section <- function(xlsx = "data/cv.xlsx", sheet = "contact") {
     glue::glue_data(
       '## Contact Info {{#contact}}',
       '\n\n',
-      '- <i class="fa fa-user" style="color: var(--main-color);"></i> {position}',
+      '- {fa("user", fill = main_colour)} {position}',
       '\n',
-      '- <i class="fa fa-university" style="color: var(--main-color);"></i> {institute}',
+      '- {fa("university", fill = main_colour)} {institute}',
       '\n',
-      '- <i class="fa fa-map-marker" style="color: var(--main-color);"></i> {city}',
+      '- {fa("map-marker", fill = main_colour)} {city}',
       '\n',
-      '- <i class="fa fa-envelope" style="color: var(--main-color);"></i> [{gsub("@", " [at] ", email)}](mailto:{email})',
+      '- {fa("envelope", fill = main_colour)} [{gsub("@", " [at] ", email)}](mailto:{email})',
       '\n',
-      '- <i class="fa fa-phone" style="color: var(--main-color);"></i> {phone}',
+      '- {fa("phone", fill = main_colour)} {phone}',
       '\n',
-      '- <i class="fab fa-orcid" style="color: var(--main-color);"></i> [{orcid}](https://orcid.org/{orcid})',
+      '- {fa("orcid", fill = main_colour)} [{orcid}](https://orcid.org/{orcid})',
       '\n',
-      '- <i class="fa fa-linkedin" style="color: var(--main-color);"></i> [{linkedin}](https://www.linkedin.com/in/{linkedin})',
+      '- {fa("linkedin", fill = main_colour)} [{linkedin}](https://www.linkedin.com/in/{linkedin})',
       '\n',
-      '- <i class="fa fa-github" style="color: var(--main-color);"></i> [{github}](https://github.com/{github})',
+      '- {fa("github", fill = main_colour)} [{github}](https://github.com/{github})',
       '\n',
-      '- <i class="fa fa-twitter" style="color: var(--main-color);"></i> [{twitter}](https://twitter.com/{twitter})',
+      '- {fa("twitter", fill = main_colour)} [{twitter}](https://twitter.com/{twitter})',
       '\n',
-      '- <i class="fab fa-r-project" style="color: var(--main-color);"></i> {rgroup}',
+      '- {fa("r-project", fill = main_colour)} {rgroup}',
       '\n\n'
     )
 }
@@ -211,49 +215,47 @@ packages_section <- function(xlsx = "data/cv.xlsx", sheet = "packages", author =
     purrr::pmap(
       .l = list(repo_user, repo_name, where), 
       .f =  function(repo_user, repo_name, where) {
+        mc <- sub("#", "", main_colour)
         switch(
           EXPR = where,
           "GitHub" = {
-            paste(
+            paste0(
               "[https://github.com/", repo_user, "/", repo_name, "/](https://github.com/", repo_user, "/", repo_name, "/)", 
               "\n\n",
               "::: aside",
               "\n",
-              "[![GitHub_tag](https://img.shields.io/github/tag/", repo_user, "/", repo_name, ".svg?label=Github&color=4169e1)](https://github.com/", repo_user, "/", repo_name, "/)",
+              "[![GitHub_tag](https://img.shields.io/github/tag/", repo_user, "/", repo_name, ".svg?label=Github&color=", mc, ")](https://github.com/", repo_user, "/", repo_name, "/)",
               "\n",
               ":::",
-              "\n",
-              sep = ""
+              "\n"
             )
           },
           "CRAN" = {
-            paste(
+            paste0(
               "[https://cran.r-project.org/package=", repo_name, "](https://cran.r-project.org/package=", repo_name, ")", 
               "\n\n",
               "::: aside",
               "\n",
-              "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", repo_name, "?color=4169e1)](https://cran.r-project.org/package=", repo_name, ")",
+              "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", repo_name, "?color=", mc, ")](https://cran.r-project.org/package=", repo_name, ")",
               "\n",
               ":::",
-              "\n",
-              sep = ""
+              "\n"
             )
           },
           "BOTH" = {
-            paste(
+            paste0(
               "[https://cran.r-project.org/package=", repo_name, "](https://cran.r-project.org/package=", repo_name, ")  ", 
               "\n",
               "[https://github.com/", repo_user, "/", repo_name, "/](https://github.com/", repo_user, "/", repo_name, "/)", 
               "\n\n",
               "::: aside",
               "\n",
-              "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", repo_name, "?color=4169e1)](https://cran.r-project.org/package=", repo_name, ")  ", 
+              "[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version-ago/", repo_name, "?color=", mc, ")](https://cran.r-project.org/package=", repo_name, ")  ", 
               "\n",
-              "[![GitHub_tag](https://img.shields.io/github/tag/", repo_user,"/", repo_name, ".svg?label=Github&color=4169e1)](https://github.com/", repo_user, "/", repo_name, "/)",
+              "[![GitHub_tag](https://img.shields.io/github/tag/", repo_user,"/", repo_name, ".svg?label=Github&color=", mc, ")](https://github.com/", repo_user, "/", repo_name, "/)",
               "\n",
               ":::",
-              "\n",
-              sep = ""
+              "\n"
             )
           }
         )
