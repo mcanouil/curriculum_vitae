@@ -27,25 +27,25 @@ contact_section <- function(xlsx = "data/cv.xlsx", sheet = "contact") {
     glue::glue_data(
       '## Contact Info {{#contact}}',
       '\n\n',
-      '- <i class="fa fa-user" style="color: #4169e1;"></i> {position}',
+      '- <i class="fa fa-user" style="color: var(--main-color);"></i> {position}',
       '\n',
-      '- <i class="fa fa-university" style="color: #4169e1;"></i> {institute}',
+      '- <i class="fa fa-university" style="color: var(--main-color);"></i> {institute}',
       '\n',
-      '- <i class="fa fa-map-marker" style="color: #4169e1;"></i> {city}',
+      '- <i class="fa fa-map-marker" style="color: var(--main-color);"></i> {city}',
       '\n',
-      '- <i class="fa fa-envelope" style="color: #4169e1;"></i> [{gsub("@", " [at] ", email)}](mailto:{email})',
+      '- <i class="fa fa-envelope" style="color: var(--main-color);"></i> [{gsub("@", " [at] ", email)}](mailto:{email})',
       '\n',
-      '- <i class="fa fa-phone" style="color: #4169e1;"></i> {phone}',
+      '- <i class="fa fa-phone" style="color: var(--main-color);"></i> {phone}',
       '\n',
-      '- <i class="fab fa-orcid" style="color: #4169e1;"></i> [{orcid}](https://orcid.org/{orcid})',
+      '- <i class="fab fa-orcid" style="color: var(--main-color);"></i> [{orcid}](https://orcid.org/{orcid})',
       '\n',
-      '- <i class="fa fa-linkedin" style="color: #4169e1;"></i> [{linkedin}](https://www.linkedin.com/in/{linkedin})',
+      '- <i class="fa fa-linkedin" style="color: var(--main-color);"></i> [{linkedin}](https://www.linkedin.com/in/{linkedin})',
       '\n',
-      '- <i class="fa fa-github" style="color: #4169e1;"></i> [{github}](https://github.com/{github})',
+      '- <i class="fa fa-github" style="color: var(--main-color);"></i> [{github}](https://github.com/{github})',
       '\n',
-      '- <i class="fa fa-twitter" style="color: #4169e1;"></i> [{twitter}](https://twitter.com/{twitter})',
+      '- <i class="fa fa-twitter" style="color: var(--main-color);"></i> [{twitter}](https://twitter.com/{twitter})',
       '\n',
-      '- <i class="fab fa-r-project" style="color: #4169e1;"></i> {rgroup}',
+      '- <i class="fab fa-r-project" style="color: var(--main-color);"></i> {rgroup}',
       '\n\n'
     )
 }
@@ -62,11 +62,11 @@ skills_section <- function(xlsx = "data/cv.xlsx", sheet = "skills") {
     glue::glue_data(
       '## Computer Skills {{#skills}}',
       "\n\n",
-      '- <u style="color: #4169e1;">*Advanced:*</u> {advanced}',
+      '- <u style="color: var(--main-color);">*Advanced:*</u> {advanced}',
       '\n',
-      '- <u style="color: #4169e1;">*Intermediate:*</u> {intermediate}',
+      '- <u style="color: var(--main-color);">*Intermediate:*</u> {intermediate}',
       '\n',
-      '- <u style="color: #4169e1;">*Basic:*</u> {basic}',
+      '- <u style="color: var(--main-color);">*Basic:*</u> {basic}',
       '\n\n'
     )
 }
@@ -138,9 +138,9 @@ experience_section <- function(xlsx = "data/cv.xlsx", sheet = "experience", page
     )
   
   if (page_break_after) {
-    c("## Professional & Research Experience {data-icon=laptop .break-after-me}", text)
+    c("## Professional Experience {data-icon=laptop .break-after-me}", text)
   } else {
-    c("## Professional & Research Experience {data-icon=laptop}", text)
+    c("## Professional Experience {data-icon=laptop}", text)
   }
 }
 
@@ -416,7 +416,7 @@ articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_afte
       split_authors <- unlist(strsplit(strsplit(iauthors, ", ")[[1]], " and "))
       split_authors <- gsub(
         pattern = author, 
-        replacement = paste0("<u>", author, "</u>", if (ifirst) "<sup>†</sup>" else ""), 
+        replacement = paste0("<u>", author, "</u>", if (ifirst) "<sup>&dagger;</sup>" else ""), 
         x = split_authors
       )
       pos_author <- grep(author, split_authors)
@@ -501,7 +501,7 @@ articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_afte
       'N/A',
       '{month} {year}',
       '::: aside',
-      '*[{journal}]({doi})*\n{ifelse(first, \'<p style="font-size: 75%;"><sup>†</sup> As first or co-first author.</p>\', \'\')}\n:::',
+      '*[{journal}]({doi})*\n{ifelse(first, \'<p style="font-size: 75%;"><sup>&dagger;</sup> As first or co-first author.</p>\', \'\')}\n:::',
     )
   
   if (page_break_after) {

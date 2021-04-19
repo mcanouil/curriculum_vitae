@@ -5,8 +5,9 @@
 @import url("https://use.fontawesome.com/releases/v5.14.0/css/all.css");
 
 :root {
+  --main-color: #333333;
   --page-width: 8.26in;
-  --margin-right: 0.5in;
+  --margin-right: 0.25in;
   --margin-left: 0.25in;
   --content-width: calc(var(--page-width) - var(--margin-right) - var(--margin-left));
   --root-font-size: 12pt;
@@ -29,7 +30,7 @@
 
   --main-blocks-title-icon-offset-left: calc(-17pt - 0.25 * var(--root-font-size));
 
-  --viewer-background-color: #222222;
+  --viewer-background-color: #333333;
   --viewer-pages-spacing: 12px;
   --viewer-shadow-color: #313131;
 }
@@ -41,7 +42,7 @@
 
 @page {
   size: A4 portrait;
-  margin: 1in 0.5in 1in 0.25in;
+  margin: 0.5in 0.25in 0.5in 0.25in;
   background: linear-gradient(to left, var(--sidebar-background-color), var(--sidebar-background-color) var(--sidebar-background-width), white var(--sidebar-background-width));
 }
 
@@ -60,7 +61,7 @@ body {
 
 h1, h2, h3 {
   margin: 0;
-  color: #000;
+  color: var(--main-color);
 }
 
 #main > h1, #aside > h1, #disclaimer > h2 {
@@ -72,7 +73,7 @@ li {
 }
 
 a {
-  color: #4169e1;
+  color: var(--main-color);
   text-decoration: none;
 }
 
@@ -119,7 +120,7 @@ h1, h2 {
   font-weight: 300;
   font-size: 1.8rem;
   line-height: 1.5;
-  color: #4169e1;
+  color: var(--main-color);
 }
 
 #title h3 {
@@ -145,7 +146,7 @@ h1, h2 {
   left: calc((var(--date-block-width) + var(--decorator-horizontal-margin)));
   font-weight: 400;
   font-size: 1.1rem;
-  color: #4169e1;
+  color: var(--main-color);
 }
 
 #main h2 > i {
@@ -206,7 +207,7 @@ h1, h2 {
   text-align: right;
   line-height: 1;
   max-width: var(--date-block-width);
-  color: #4169e1;
+  color: var(--main-color);
 }
 
 .date span {
@@ -277,7 +278,7 @@ h1, h2 {
 }
 
 .details header {
-  color: #000;
+  color: var(--main-color);
 }
 
 .details h3 {
@@ -305,7 +306,7 @@ h1, h2 {
 
 .details .location {
   float: right;
-  color: #4169e1;
+  color: var(--main-color);
 }
 
 .details div {
@@ -363,11 +364,11 @@ h1, h2 {
 }
 
 #contact {
-  color: #000;
+  color: var(--main-color);
 }
 
 #contact a {
-  color: #000;
+  color: var(--main-color);
 }
 
 #contact ul {
@@ -440,7 +441,7 @@ h1, h2 {
 #picture {
   border-style: solid;
   border-width: 2pt;
-  border-color: #4169e1;
+  border-color: var(--main-color);
   border-radius: 50%;
   padding: 5pt;
 }

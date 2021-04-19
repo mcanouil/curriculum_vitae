@@ -60,7 +60,7 @@ hex_list <- c(
   "nacho.png", 
   "rain.png"
 )
-hex_logo <- glue::glue("https://raw.githubusercontent.com/mcanouil/hex-stickers/master/PNG/{tolower(hex_list)}")
+hex_logo <- glue::glue("https://raw.githubusercontent.com/mcanouil/hex-stickers/main/PNG/{tolower(hex_list)}")
 hex_logo_ordered <- file.path(tempdir(), "hex", paste(1:length(hex_logo), basename(hex_logo), sep = "-"))
 utils::download.file(url = hex_logo, destfile = hex_logo_ordered, method = "libcurl")
 hex_wall <- hexwall(
@@ -75,14 +75,14 @@ hex_wall
 
 ```{r}
 cat(
-  education_section(xlsx = params[["xlsx"]], sheet = "education"),
-  experience_section(xlsx = params[["xlsx"]], sheet = "experience", page_break_after = TRUE),
-  workshop_section(xlsx = params[["xlsx"]], sheet = "workshop"),
-  awards_section(xlsx = params[["xlsx"]], sheet = "awards"),
+  education_section(xlsx = params[["xlsx"]], sheet = "education", page_break_after = FALSE),
+  experience_section(xlsx = params[["xlsx"]], sheet = "experience", page_break_after = FALSE),
+  workshop_section(xlsx = params[["xlsx"]], sheet = "workshop", page_break_after = FALSE),
+  awards_section(xlsx = params[["xlsx"]], sheet = "awards", page_break_after = FALSE),
   oral_section(xlsx = params[["xlsx"]], sheet = "oral", page_break_after = TRUE),
-  poster_section(xlsx = params[["xlsx"]], sheet = "poster"),
-  packages_section(xlsx = params[["xlsx"]], sheet = "packages", author = params[["author"]]),
-  articles_section(bib = params[["bib"]], author = params[["author"]]),
+  poster_section(xlsx = params[["xlsx"]], sheet = "poster", page_break_after = FALSE),
+  packages_section(xlsx = params[["xlsx"]], sheet = "packages", author = params[["author"]], page_break_after = FALSE),
+  articles_section(bib = params[["bib"]], author = params[["author"]], page_break_after = FALSE),
   sep = "\n"
 )
 ```
