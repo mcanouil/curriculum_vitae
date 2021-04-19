@@ -8,6 +8,7 @@ title: '`r paste(params[["author"]], "Curriculum Vitæ", sep = " - ")`'
 author: '`r params[["author"]]`'
 output:
   pagedown::html_resume:
+    self_contained: true
     css: "utils/curriculum_vitae.css"
     mathjax: null
     includes:

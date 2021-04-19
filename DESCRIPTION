@@ -1,17 +1,17 @@
 Package: curriculum_vitae
 Title: Curriculum Vitae
 Version: 0.0.1
+License: CC BY 4.0
 Imports: 
-    Hmisc,
-    rmarkdown,
-    pagedown,
-    glue,
-    tibble,
     dplyr,
-    tidyr,
+    fontawesome,
+    glue,
+    Hmisc,
+    knitr,
     magrittr,
+    pagedown,
     purrr,
     readxl,
-    colorspace,
-    fontawesome
-License: CC BY 4.0
+    renv,
+    rmarkdown,
+    tidyr
