@@ -60,6 +60,7 @@ jobs:
         if: runner.os != 'Windows'
         run: |
           Rscript -e 'remotes::install_deps(dependencies = TRUE)'
+          Rscript -e 'remotes::install_github("rstudio/pagedown@v0.13")'
 
       - name: Render CV
         run: |
