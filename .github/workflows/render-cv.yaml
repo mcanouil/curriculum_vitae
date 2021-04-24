@@ -47,7 +47,7 @@ jobs:
       - name: Install dependencies
         run: |
           pak::local_install_dev_deps(upgrade = TRUE)
-          pak::pkg_install("rstudio/pagedownr-lib/pkgdown")
+          pak::pkg_install("rstudio/pagedown")
         shell: Rscript {0}
 
       - name: Render CV
