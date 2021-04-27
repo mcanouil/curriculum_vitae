@@ -29,28 +29,20 @@ contact_section <- function(xlsx = "data/cv.xlsx", sheet = "contact") {
   readxl::read_xlsx(xlsx, sheet) %>% 
     dplyr::mutate_all(.funs = ~ tidyr::replace_na(.x, "")) %>% 
     glue::glue_data(
-      '## Contact Info {{#contact}}',
-      '\n\n',
+      '## Contact Info {{#contact}}\n',
       '- {fa("user", fill = main_colour)} {position}',
-      '\n',
       '- {fa("university", fill = main_colour)} {institute}',
-      '\n',
       '- {fa("map-marker", fill = main_colour)} {city}',
-      '\n',
       '- {fa("envelope", fill = main_colour)} [{gsub("@", " [at] ", email)}](mailto:{email})',
-      '\n',
       '- {fa("phone", fill = main_colour)} {phone}',
-      '\n',
+      '- {fa("home", fill = main_colour)} [{sub("/$", "", sub("https*://", "", website))}]({website})',
       '- {fa("orcid", fill = main_colour)} [{orcid}](https://orcid.org/{orcid})',
-      '\n',
       '- {fa("linkedin", fill = main_colour)} [{linkedin}](https://www.linkedin.com/in/{linkedin})',
-      '\n',
       '- {fa("github", fill = main_colour)} [{github}](https://github.com/{github})',
-      '\n',
       '- {fa("twitter", fill = main_colour)} [{twitter}](https://twitter.com/{twitter})',
-      '\n',
       '- {fa("r-project", fill = main_colour)} {rgroup}',
-      '\n\n'
+      '\n',
+      .sep = "\n"
     )
 }
 

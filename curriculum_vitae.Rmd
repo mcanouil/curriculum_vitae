@@ -9,12 +9,10 @@ author: '`r params[["author"]]`'
 output:
   pagedown::html_resume:
     self_contained: true
-    css: "utils/curriculum_vitae.css"
+    css: "assets/cv.css"
     mathjax: null
     includes:
-      in_header: "utils/_favicon.html"
-editor_options: 
-  chunk_output_type: console
+      in_header: "assets/_favicon.html"
 knit: (function(inputFile, encoding) { rmarkdown::render(inputFile, output_file = "index.html", encoding = encoding, output_dir = "docs") })
 ---
 
@@ -28,7 +26,7 @@ knitr::opts_chunk$set(
   error = FALSE, 
   warning = FALSE
 )
-source(file.path("utils", "cv.R"))
+source(file.path("assets", "cv.R"))
 ```
 
 # Aside
@@ -44,17 +42,11 @@ cat(
   disclaimer_section(text = NULL),
   title_section(author = params[["author"]]),
   profil_section(xlsx = params[["xlsx"]], sheet = "profil"),
-  sep = "\n"
-)
-```
-
-```{r}
-cat(
   education_section(xlsx = params[["xlsx"]], sheet = "education", page_break_after = FALSE),
   experience_section(xlsx = params[["xlsx"]], sheet = "experience", page_break_after = FALSE),
   workshop_section(xlsx = params[["xlsx"]], sheet = "workshop", page_break_after = FALSE),
-  awards_section(xlsx = params[["xlsx"]], sheet = "awards", page_break_after = TRUE),
-  oral_section(xlsx = params[["xlsx"]], sheet = "oral", page_break_after = FALSE),
+  awards_section(xlsx = params[["xlsx"]], sheet = "awards", page_break_after = FALSE),
+  oral_section(xlsx = params[["xlsx"]], sheet = "oral", page_break_after = TRUE),
   poster_section(xlsx = params[["xlsx"]], sheet = "poster", page_break_after = FALSE),
   packages_section(xlsx = params[["xlsx"]], sheet = "packages", author = params[["author"]], page_break_after = FALSE),
   articles_section(bib = params[["bib"]], author = params[["author"]], page_break_after = FALSE),

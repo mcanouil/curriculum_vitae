@@ -1,7 +1,7 @@
 Package: curriculum_vitae
 Title: Curriculum Vitae
 Version: 0.0.1
-License: CC BY 4.0
+License: LICENSE.md
 Imports: 
     dplyr,
     fontawesome,
