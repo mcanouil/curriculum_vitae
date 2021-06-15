@@ -424,7 +424,7 @@ articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_afte
         switch(
           EXPR = paste(abs(c(0, length(split_authors)) - pos_author) > ceiling(max / 2), collapse = "--"),
           "TRUE--TRUE" = {
-            if (pos_author > 1) {
+            if (pos_author <= ceiling((max - 1) / 2)) {
               split_authors[pos_author] <- paste0(
                 split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
               )
@@ -445,7 +445,7 @@ articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_afte
             )
           },
           "TRUE--FALSE" = {
-            if (pos_author > 1) {
+            if (pos_author <= ceiling(max / 2)) {
               split_authors[pos_author] <- paste0(
                 split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
               )
@@ -464,7 +464,7 @@ articles_section <- function(bib = "data/cv.bib", author = NULL, page_break_afte
             )
           },
           "FALSE--TRUE" = {
-            if (pos_author > 1) {
+            if (pos_author <= ceiling(max / 2)) {
               split_authors[pos_author] <- paste0(
                 split_authors[pos_author], "<sup>", pos_author, "/", length(split_authors), "</sup>"
               )
